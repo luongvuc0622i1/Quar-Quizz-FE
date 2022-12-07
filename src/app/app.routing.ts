@@ -3,6 +3,7 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import {ManagerLayoutComponent} from "./layouts/manager-layout/manager-layout.component";
+import {FormLoginComponent} from "./form-login/form-login.component";
 
 const routes: Routes =[
   {
@@ -13,10 +14,18 @@ const routes: Routes =[
     path: '',
     component: ManagerLayoutComponent,
     children: [
-        {
-      path: '',
-      loadChildren: () => import('./layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
-  }]},
+      {
+        path: '',
+        loadChildren: () => import('./layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
+      }]},
+  {
+    path: 'account',
+    component: FormLoginComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./form-login/form-login.module').then(x => x.FormLoginModule)
+      }]},
   {
     path: '**',
     redirectTo: 'dashboard'
@@ -28,7 +37,7 @@ const routes: Routes =[
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes,{
-       useHash: true
+      useHash: true
     })
   ],
   exports: [

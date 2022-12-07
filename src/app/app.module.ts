@@ -11,23 +11,37 @@ import { SidebarModule } from './sidebar/sidebar.module';
 
 import { AppComponent } from './app.component';
 import {ManagerLayoutComponent} from "./layouts/manager-layout/manager-layout.component";
+import { FormLoginComponent } from './form-login/form-login.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatCardModule} from "@angular/material/card";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    RouterModule,
-    HttpClientModule,
-    NavbarModule,
-    FooterModule,
-    SidebarModule,
-    AppRoutingModule
-  ],
-  declarations: [
-    AppComponent,
-    ManagerLayoutComponent
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        RouterModule,
+        HttpClientModule,
+        NavbarModule,
+        FooterModule,
+        SidebarModule,
+        AppRoutingModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatRadioModule,
+        MatCheckboxModule,
+        MatButtonModule
+    ],
+    declarations: [
+        AppComponent,
+        ManagerLayoutComponent,
+        FormLoginComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
