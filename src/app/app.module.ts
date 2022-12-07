@@ -10,8 +10,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 
 import { AppComponent } from './app.component';
-
-import { ManagerLayoutComponent } from './layouts/manager-layout/manager-layout.component';
+import {ManagerLayoutComponent} from "./layouts/manager-layout/manager-layout.component";
 
 @NgModule({
   imports: [
