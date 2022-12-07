@@ -1,3 +1,5 @@
+
+
 <div class="container">
 
     <div class="row">
@@ -14,9 +16,16 @@
 <!--                            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+                        <div class="example-container">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter your email</mat-label>
+                                <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </div>
+<!--                        <input type="text" placeholder="Name" />-->
+<!--                        <input type="email" placeholder="Email" />-->
+<!--                        <input type="password" placeholder="Password" />-->
                         <button id="singUp">Sign Up</button>
                     </form>
                 </div>
@@ -30,8 +39,23 @@
 <!--                            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
                         </div>
                         <span>or use your account</span>
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+
+                            <mat-form-field appearance="outline" style="width: 250px">
+                                <mat-label>Account</mat-label>
+                                <input matInput placeholder="input your account">
+                                <mat-icon matSuffix>input</mat-icon>
+                            </mat-form-field>
+
+
+                        <mat-form-field appearance="outline" style="width: 250px">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput placeholder="input your password">
+                            <mat-icon matSuffix>input</mat-icon>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
+
+
+
                         <a href="#">Forgot your password?</a>
                         <button id="singIn">Sign In</button>
                     </form>

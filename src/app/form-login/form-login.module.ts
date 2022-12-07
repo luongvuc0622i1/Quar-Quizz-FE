@@ -15,6 +15,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -37,6 +39,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class FormLoginModule { }
