@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
 import {CategoryComponent} from "../../category/category.component";
-import {QuizzComponent} from "../../quizz/quizz.component";
+import {QuizComponent} from "../../quiz/quiz.component";
 import {TestComponent} from "../../test/test.component";
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
@@ -15,7 +15,7 @@ export const ManagerLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user',           component: UserComponent },
     { path: 'category',       component: CategoryComponent },
-    { path: 'quizz',          component: QuizzComponent },
+    { path: 'quiz',          component: QuizComponent },
     { path: 'test',           component: TestComponent },
     { path: 'table',          component: TablesComponent },
     { path: 'typography',     component: TypographyComponent },
