@@ -73,10 +73,10 @@ light-bootstrap-dashboard-angular
 │   │   │   └── admin-layout
 │   │   │       ├── admin-layout.component.html
 │   │   │       ├── admin-layout.component.scss
-│   │   │       ├── admin-layout.component.spec.ts
-│   │   │       ├── admin-layout.component.ts
-│   │   │       ├── admin-layout.module.ts
-│   │   │       └── admin-layout.routing.ts
+│   │   │       ├── manager-layout.component.spec.ts
+│   │   │       ├── manager-layout.component.ts
+│   │   │       ├── manager-layout.module.ts
+│   │   │       └── manager-layout.routing.ts
 │   │   ├── lbd
 │   │   │   ├── lbd-chart
 │   │   │   │   ├── lbd-chart.component.html
