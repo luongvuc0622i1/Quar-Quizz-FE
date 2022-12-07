@@ -7,24 +7,20 @@
                         <h4 class="title">Edit Profile</h4>
                     </div>
                     <div class="content">
-                        <form>
+                        <form [formGroup]="testForm" (ngSubmit)="submit()">
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label>Company (disabled)</label>
-                                        <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username" value="michael23">
-                                    </div>
-                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control here" placeholder="Username" formControlName="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Level</label>
+                                        <input type="number" class="form-control here" placeholder="Level" formControlName="level">
                                     </div>
                                 </div>
                             </div>

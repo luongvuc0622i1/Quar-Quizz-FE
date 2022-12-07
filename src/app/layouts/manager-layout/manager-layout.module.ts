@@ -27,7 +27,8 @@ import {CreateTestComponent} from "../../tests/crud/create-test/create-test.comp
     RouterModule.forChild(ManagerLayoutRoutes),
     FormsModule,
     LbdModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
+    ReactiveFormsModule
   ],
   declarations: [
     HomeComponent,
