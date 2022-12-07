@@ -17,15 +17,28 @@
                         </div>
                         <span>or use your email for registration</span>
                         <div class="example-container">
+<!--                            USERNAME-->
                             <mat-form-field appearance="fill">
-                                <mat-label>Enter your email</mat-label>
-                                <input matInput placeholder="pat@example.com" [formControl]="email" required>
-                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                <mat-label>Enter your Username</mat-label>
+                                <input name="userName" #userName="ngModel" matInput placeholder="YourUsername" [(ngModel)]="form.userName" required minlength="6">
+                                <mat-icon color="primary" matSuffix>account_box</mat-icon>
+                                <mat-error *ngIf="userName.hasError('required')">UserName is required!</mat-error>
+                                <mat-error *ngIf="userName.hasError('minlength')">UserName must have at least 3 characters!</mat-error>
                             </mat-form-field>
+<!--                            EMAIL-->
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter your Email</mat-label>
+                                <input [formControl]="mailFormControl" name="email"  matInput placeholder="YourEmail" [(ngModel)]="form.email" required>
+                                <mat-icon color="primary" matSuffix>alternate_email</mat-icon>
+                                <mat-error *ngIf="mailFormControl.hasError('required')">Mail is required!</mat-error>
+                                <mat-error *ngIf="mailFormControl.hasError('email')">Email is invalid! Example: youremail@gmail.com</mat-error>
+                            </mat-form-field>
+<!--                            <mat-form-field appearance="fill">-->
+<!--                                <mat-label>Enter your email</mat-label>-->
+<!--                                <input matInput placeholder="pat@example.com" [formControl]="email" required>-->
+<!--                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+<!--                            </mat-form-field>-->
                         </div>
-<!--                        <input type="text" placeholder="Name" />-->
-<!--                        <input type="email" placeholder="Email" />-->
-<!--                        <input type="password" placeholder="Password" />-->
                         <button id="singUp">Sign Up</button>
                     </form>
                 </div>

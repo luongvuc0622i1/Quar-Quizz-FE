@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import {FormLoginRouting} from './form-login-routing.module';
 import {RouterModule} from "@angular/router";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
@@ -17,6 +16,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -34,14 +34,14 @@ import {MatSelectModule} from "@angular/material/select";
     MatFormFieldModule,
     CommonModule,
     RouterModule.forChild(FormLoginRouting),
-    FormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class FormLoginModule { }

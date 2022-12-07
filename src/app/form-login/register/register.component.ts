@@ -8,6 +8,8 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
 
+  form: any = {};
+
   constructor() { }
 
   ngOnInit(): void {
@@ -27,15 +29,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     });
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+  mailFormControl = new FormControl('', [
+      Validators.email,
+      Validators.required
+      ]);
 
 
 }
