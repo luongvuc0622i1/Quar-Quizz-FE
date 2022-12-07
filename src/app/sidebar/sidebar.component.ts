@@ -8,16 +8,16 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
-    { path: '/user', title: 'User Profile',  icon:'pe-7s-user', class: '' },
-    { path: '/category', title: 'Category',  icon:'pe-7s-note2', class: '' },
-    { path: '/quiz', title: 'Quiz',  icon:'pe-7s-news-paper', class: '' },
-    { path: '/test/list', title: 'Test',  icon:'pe-7s-news-paper', class: '' },
-    { path: '/table', title: 'Table List',  icon:'pe-7s-note2', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'pe-7s-news-paper', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'pe-7s-science', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'pe-7s-map-marker', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'pe-7s-bell', class: '' },
+    { path: '/manager/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
+    { path: '/manager/user', title: 'User Profile',  icon:'pe-7s-user', class: '' },
+    { path: '/manager/category', title: 'Category',  icon:'pe-7s-note2', class: '' },
+    { path: '/manager/quiz', title: 'Quiz',  icon:'pe-7s-news-paper', class: '' },
+    { path: '/manager/test/list', title: 'Test',  icon:'pe-7s-news-paper', class: '' },
+    { path: '/manager/table', title: 'Table List',  icon:'pe-7s-note2', class: '' },
+    { path: '/manager/typography', title: 'Typography',  icon:'pe-7s-news-paper', class: '' },
+    { path: '/manager/icons', title: 'Icons',  icon:'pe-7s-science', class: '' },
+    { path: '/manager/maps', title: 'Maps',  icon:'pe-7s-map-marker', class: '' },
+    { path: '/manager/notifications', title: 'Notifications',  icon:'pe-7s-bell', class: '' },
 ];
 
 @Component({

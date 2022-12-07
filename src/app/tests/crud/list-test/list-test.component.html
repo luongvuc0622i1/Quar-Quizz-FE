@@ -8,7 +8,7 @@
                         <p class="category">This is table of test list</p>
                     </div>
                     <div class="header" style="float: right">
-                        <a [routerLink]="['/test/create']" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> Create new test</a>
+                        <a [routerLink]="['/manager/test/create']" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> Create new test</a>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
@@ -25,7 +25,7 @@
                             <tbody>
                             <tr *ngFor="let test of tests; index as i">
                                 <td>{{i + 1}}</td>
-                                <td><a [routerLink]="['/tests/',test.id]">{{test.name}}</a></td>
+                                <td><a [routerLink]="['/manager/test/detail/',test.id]">{{test.name}}</a></td>
                                 <td>{{test.level.name}}</td>
                                 <td style="text-align: right">{{test.passScore}}</td>
                                 <td></td>
