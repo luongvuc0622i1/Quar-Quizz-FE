@@ -27,6 +27,7 @@ import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
+<<<<<<< HEAD
     imports: [
         CommonModule,
         RouterModule.forChild(ManagerLayoutRoutes),
@@ -37,6 +38,18 @@ import {MatTableModule} from "@angular/material/table";
         MatCheckboxModule,
         MatTableModule
     ],
+=======
+  imports: [
+    CommonModule,
+    RouterModule.forChild(ManagerLayoutRoutes),
+    FormsModule,
+    LbdModule,
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatTableModule
+  ],
+>>>>>>> 7172b0075b2d1e54ddce9a6c1250cf4b7d65e3ca
     declarations: [
         HomeComponent,
         UserComponent,
