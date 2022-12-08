@@ -10,14 +10,17 @@ import { ManagerLayoutRoutes } from './manager-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
-import {CategoryComponent} from "../../category/category.component";
 import {QuizComponent} from "../../quiz/quiz.component";
-import {TestComponent} from "../../test/test.component";
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
+import {ListTestComponent} from "../../tests/crud/list-test/list-test.component";
+import {CreateTestComponent} from "../../tests/crud/create-test/create-test.component";
+import {ListComponent} from "../../category/list/list.component";
+import {CreateComponent} from "../../category/create/create.component";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -26,14 +29,18 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
     RouterModule.forChild(ManagerLayoutRoutes),
     FormsModule,
     LbdModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   declarations: [
     HomeComponent,
     UserComponent,
-    CategoryComponent,
     QuizComponent,
-    TestComponent,
+      ListComponent,
+      CreateComponent,
+    ListTestComponent,
+    CreateTestComponent,
     TablesComponent,
     TypographyComponent,
     IconsComponent,

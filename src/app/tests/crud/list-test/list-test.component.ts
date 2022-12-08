@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {TestService} from "./service/test.service";
-import {Test} from "./model/test";
+import {Test} from "../../model/test";
+import {TestService} from "../../service/test.service";
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  selector: 'app-list-test',
+  templateUrl: './list-test.component.html',
+  styleUrls: ['./list-test.component.scss']
 })
-export class TestComponent implements OnInit {
+export class ListTestComponent implements OnInit {
   tests: Test[] = [];
 
   constructor(private testService: TestService) { }

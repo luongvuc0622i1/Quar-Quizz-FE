@@ -4,11 +4,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header" style="float: left">
-                        <h4 class="title">Test List</h4>
+                        <h4 class="title">category List</h4>
                         <p class="category">This is table of test list</p>
                     </div>
                     <div class="header" style="float: right">
-                        <a [routerLink]="['/tests/create']" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> Create new test</a>
+                        <button [routerLink]="['/manager/category/create']" class="btn btn-info btn-fill pull-right">Create New category</button>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
@@ -16,20 +16,16 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Level</th>
                                 <th style="width: 100px">Pass Score</th>
                                 <th style="width: 200px"></th>
-                                <th>Max Time</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let test of tests; index as i">
+                            <tr *ngFor="let categoryS of category; index as i">
                                 <td>{{i + 1}}</td>
-                                <td><a [routerLink]="['/tests/',test.id]">{{test.name}}</a></td>
-                                <td>{{test.level.name}}</td>
-                                <td style="text-align: right">{{test.passScore}}</td>
+                                <td>{{categoryS.name}}</td>
+                                <td><a [routerLink]="['/manager/category/',categoryS.id]">delete</a></td>
                                 <td></td>
-                                <td>{{test.maxTime}}</td>
                             </tr>
                             </tbody>
                         </table>
