@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from "../../service/test.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Test} from "../../model/test";
 import {Level} from "../../model/level";
 import {Quiz} from "../../model/quiz";
@@ -18,6 +18,7 @@ export class CreateTestComponent implements OnInit {
   categories: Category[] = [];
   categoriesChoice: Category[] = [];
   limit: number = 0;
+  booleanT: boolean = false;
 
   constructor(private testService: TestService) { }
 
@@ -26,12 +27,28 @@ export class CreateTestComponent implements OnInit {
   }
 
   testForm: FormGroup = new FormGroup({
-    name: new FormControl(),
-    level: new FormControl(),
-    category: new FormControl(),
-    passScore: new FormControl(),
-    maxTime: new FormControl(),
+    name: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    level: new FormControl("", [Validators.required]),
+    amount: new FormControl("", [Validators.required]),
+    passScore: new FormControl("", [Validators.required]),
+    maxTime: new FormControl("", [Validators.required]),
   })
+
+  get name(){
+    return this.testForm.get('name')
+  }
+  get level(){
+    return this.testForm.get('level')
+  }
+  get passScore(){
+    return this.testForm.get('passScore')
+  }
+  get maxTime(){
+    return this.testForm.get('maxTime')
+  }
+  get amount(){
+    return this.testForm.get('amount')
+  }
 
   submit(){
     const test= this.testForm.value;
@@ -81,9 +98,17 @@ export class CreateTestComponent implements OnInit {
   }
 
   choose(quiz: any) {
-    if (this.quizzesChoice.length <= this.limit-1) {
+    if (this.quizzesChoice.length < this.limit-1) {
       this.quizzesChoice.push(quiz);
+    } else if (this.quizzesChoice.length = this.limit-1) {
+      this.quizzesChoice.push(quiz);
+      this.booleanT = true;
     }
+    // if (this.quizzesChoice.length = this.limit) {
+    //   this.booleanT = true;
+    // } else {
+    //   this.booleanT = false;
+    // }
   }
 
   inputNOQ(value: number) {

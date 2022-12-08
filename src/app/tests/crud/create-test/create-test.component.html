@@ -3,35 +3,69 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="header">
-                        <h2 class="title">Create New Test</h2>
-                    </div>
-                    <div class="content">
-                        <form [formGroup]="testForm" (ngSubmit)="submit()">
+                    <form [formGroup]="testForm" (ngSubmit)="submit()">
+                        <button style="margin-right: 15px; margin-top: 10px" type="submit" class="btn btn-info btn-fill pull-right" [disabled]="!testForm.valid || !categoriesChoice.length || !booleanT">Create</button>
+                        <div class="header">
+                            <h2 class="title">Create New Test</h2>
+                        </div>
+                        <div class="content">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" class="form-control here" placeholder="Name test" formControlName="name">
                                     </div>
+                                    <div *ngIf="!name?.valid && (name?.dirty || name?.touched)">
+                                        <div [hidden]="!name?.errors?.['required']">
+                                            <p style="color: orange">Name is required</p>
+                                        </div>
+                                        <div [hidden]="!name?.errors?.['minlength']">
+                                            <p style="color: orange">Name min length 3</p>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Level</label>
                                         <select class="form-control here" formControlName="level">
                                             <option *ngFor="let level of levels" [value]="level.id">{{level.name}}</option>
                                         </select>
                                     </div>
+                                    <div *ngIf="!level?.valid && (level?.dirty || level?.touched)">
+                                        <div [hidden]="!level?.errors?.['required']">
+                                            <p style="color: orange">Level is required</p>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Number Of Quizzes</label>
-                                        <input #element type="number" class="form-control here" (change)="inputNOQ(element.valueAsNumber)">
+                                        <input #element type="number" class="form-control here" formControlName="amount" (change)="inputNOQ(element.valueAsNumber)">
                                     </div>
+                                    <div *ngIf="!amount?.valid && (amount?.dirty || level?.touched)">
+                                        <div [hidden]="!amount?.errors?.['required']">
+                                            <p style="color: orange">Number of quizzes is required</p>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Pass Score</label>
                                         <input type="number" class="form-control here" placeholder="75" formControlName="passScore">
                                     </div>
+                                    <div *ngIf="!passScore?.valid && (passScore?.dirty || level?.touched)">
+                                        <div [hidden]="!passScore?.errors?.['required']">
+                                            <p style="color: orange">Pass score is required</p>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Max Time</label>
                                         <input type="time" step="2" class="form-control here" formControlName="maxTime">
                                     </div>
+                                    <div *ngIf="!maxTime?.valid && (maxTime?.dirty || level?.touched)">
+                                        <div [hidden]="!maxTime?.errors?.['required']">
+                                            <p style="color: orange">Max time is required</p>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Category</label>
                                         <section class="example-section">
@@ -44,11 +78,17 @@
                                             </span>
                                         </section>
                                     </div>
+<!--                                    <div *ngIf="category.length">-->
+<!--                                        <div [hidden]="category.length">-->
+<!--                                            <p style="color: orange">Max time is required</p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Quizzes</label>
-                                        <div class="content table-responsive table-full-width">
+                                        <div style="border: 1px solid #E3E3E3; border-radius: 4px">
                                             <table class="table table-hover table-striped">
                                                 <thead>
                                                 <tr>
@@ -71,7 +111,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Quizzes Choice</label>
-                                        <div class="content table-responsive table-full-width">
+                                        <div style="border: 1px solid #E3E3E3; border-radius: 4px">
                                             <table class="table table-hover table-striped">
                                                 <thead>
                                                 <tr>
@@ -92,10 +132,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Create</button>
+<!--                            <button type="submit" class="btn btn-info btn-fill pull-right">Create</button>-->
                             <div class="clearfix"></div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
