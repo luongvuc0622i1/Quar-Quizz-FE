@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
-import {QuizComponent} from "../../quiz/quiz.component";
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
@@ -13,13 +12,18 @@ import {CreateTestComponent} from "../../tests/crud/create-test/create-test.comp
 import {ListComponent} from "../../category/list/list.component";
 import {CreateComponent} from "../../category/create/create.component";
 import {DeleteComponent} from "../../category/delete/delete.component";
+import {ListQuizComponent} from "../../quiz/crud/list-quiz/list-quiz.component";
+import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
+import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.component";
 
 export const ManagerLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user',           component: UserComponent },
     {path:'category',    component:ListComponent},
     {path : 'category/create' ,  component:CreateComponent},
-    { path: 'quiz',          component: QuizComponent },
+    { path: 'quiz/list',          component: ListQuizComponent },
+    { path: 'quiz/create',          component: CreateQuizComponent },
+    { path: 'quiz/update',          component: UpdateQuizComponent },
     { path: 'test/list',           component: ListTestComponent },
     { path: 'test/create',           component: CreateTestComponent },
     { path: 'table',          component: TablesComponent },

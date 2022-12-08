@@ -10,7 +10,6 @@ import { ManagerLayoutRoutes } from './manager-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
-import {QuizComponent} from "../../quiz/quiz.component";
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
@@ -20,21 +19,30 @@ import {ListTestComponent} from "../../tests/crud/list-test/list-test.component"
 import {CreateTestComponent} from "../../tests/crud/create-test/create-test.component";
 import {ListComponent} from "../../category/list/list.component";
 import {CreateComponent} from "../../category/create/create.component";
+import {ListQuizComponent} from "../../quiz/crud/list-quiz/list-quiz.component";
+import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.component";
+import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(ManagerLayoutRoutes),
-    FormsModule,
-    LbdModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(ManagerLayoutRoutes),
+        FormsModule,
+        LbdModule,
+        NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
+        ReactiveFormsModule,
+        MatTableModule,
+        MatFormFieldModule
+    ],
   declarations: [
     HomeComponent,
     UserComponent,
-    QuizComponent,
+    ListQuizComponent,
+    CreateQuizComponent,
+    UpdateQuizComponent,
       ListComponent,
       CreateComponent,
     ListTestComponent,
