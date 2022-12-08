@@ -23,19 +23,24 @@
                                 <mat-label>Username</mat-label>
                                 <input name="username" #username="ngModel" matInput placeholder="YourUsername" [(ngModel)]="form.username" required minlength="6">
                                 <mat-icon color="primary" matSuffix>account_box</mat-icon>
-                                <mat-error *ngIf="username.hasError('required')">UserName is required!</mat-error>
-                                <mat-error *ngIf="username.hasError('minlength')">UserName must have at least 6 characters!</mat-error>
+
+<!--                                <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)">-->
+<!--                                    <mat-error [hidden]="username.hasError('required')">UserName is required!</mat-error>-->
+<!--                                </div>-->
+
+<!--                                <mat-error *ngIf="!username?.dirty || username?.touched">UserName is required!</mat-error>-->
+<!--                                <mat-error *ngIf="username.hasError('minlength')">UserName must have at least 6 characters!</mat-error>-->
                             </mat-form-field>
 <!--                            EMAIL-->
                             <mat-form-field appearance="fill" style="width: 250px">
                                 <mat-label>Email</mat-label>
-                                <input [formControl]="mailFormControl" name="email"  matInput placeholder="YourEmail" [(ngModel)]="form.email">
+                                <input [formControl]="mailFormControl" name="email"  matInput placeholder="YourEmail" [(ngModel)]="form.email" required >
                                 <mat-icon color="primary" matSuffix>alternate_email</mat-icon>
                                 <mat-error *ngIf="mailFormControl.hasError('required')">Mail is required!</mat-error>
                                 <mat-error *ngIf="mailFormControl.hasError('email')">Email is invalid! Ex: ye@gmail.com</mat-error>
                             </mat-form-field>
 
-<!--                            PASSWORD//-->   //
+<!--                            PASSWORD//-->
                             <div class="password-container">
                                 <mat-form-field appearance="fill" style="width: 250px">
                                     <mat-label>Password</mat-label>

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {SignUpForm} from "../model/SignUpForm";
@@ -8,7 +8,15 @@ import {SignUpForm} from "../model/SignUpForm";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit, AfterViewInit {
+export class RegisterComponent implements OnInit, AfterViewInit, AfterContentChecked {
+
+  ngAfterContentChecked() {
+    console.log(this.form.email);
+  }
+
+  onFocus() {
+    console.log(this.form.email);
+  }
 
   hide = true;
 
