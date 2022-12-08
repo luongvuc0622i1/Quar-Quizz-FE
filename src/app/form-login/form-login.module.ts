@@ -35,11 +35,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     RouterModule.forChild(FormLoginRouting),
     MatCardModule,
-    MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule,
     MatSelectModule,
     FormsModule
   ]

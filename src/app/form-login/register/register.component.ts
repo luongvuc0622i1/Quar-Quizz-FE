@@ -2,21 +2,16 @@ import {AfterContentChecked, AfterViewInit, Component, OnInit} from '@angular/co
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {SignUpForm} from "../model/SignUpForm";
+import swal from "sweetalert";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit, AfterViewInit, AfterContentChecked {
+export class RegisterComponent implements OnInit, AfterViewInit {
 
-  ngAfterContentChecked() {
-    console.log(this.form.email);
-  }
-
-  onFocus() {
-    console.log(this.form.email);
-  }
+  status = 'Please fill in the form to create account!'
 
   hide = true;
 
@@ -76,9 +71,38 @@ export class RegisterComponent implements OnInit, AfterViewInit, AfterContentChe
         this.form.email,
         this.form.password
     );
+
     this.authService.signUp(this.signUpForm).subscribe(data => {
       console.log('data ---> ', data);
-    })
+      if (data != null) {
+        this.status = 'Register Success!';
+        return;
+      }
+    }, we => {
+          console.log('we ---> ', we);
+          console.log('message --->', we.error.message);
+          if (we.error.message === 'nouser') {
+            this.status = 'Username is existed! Please try again!';
+            return;
+          } else if (we.error.message === 'noemail') {
+            this.status = 'Email is existed! Please try again!';
+            return;
+          } else {
+            this.status = 'Mail invalid! Please try again!';
+          }
+        }
+      //       error => {
+      // console.log('error ---> ', error);
+      // if (error.we.error.message === 'nouser') {
+      //   console.log('message:', error.we.error.message);
+      //   // this.status = 'Username is existed! Please try again!';
+      // }
+    )
+
+
+
   }
+
+
 
 }

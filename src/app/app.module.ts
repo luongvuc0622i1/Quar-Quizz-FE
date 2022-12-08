@@ -29,12 +29,6 @@ import {MatButtonModule} from "@angular/material/button";
         FooterModule,
         SidebarModule,
         AppRoutingModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatCardModule,
-        MatRadioModule,
-        MatCheckboxModule,
-        MatButtonModule,
     ],
     declarations: [
         AppComponent,

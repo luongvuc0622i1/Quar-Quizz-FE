@@ -23,6 +23,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ListQuizComponent} from "../../quiz/crud/list-quiz/list-quiz.component";
 import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.component";
 import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.compo
         LbdModule,
         NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
         ReactiveFormsModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatTableModule
     ],
     declarations: [
         HomeComponent,
