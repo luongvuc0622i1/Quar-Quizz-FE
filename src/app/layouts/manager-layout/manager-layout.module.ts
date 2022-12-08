@@ -18,12 +18,12 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import {ListTestComponent} from "../../tests/crud/list-test/list-test.component";
 import {CreateTestComponent} from "../../tests/crud/create-test/create-test.component";
-import {CategoryModule} from "../../category/category.module";
+import {ListComponent} from "../../category/list/list.component";
+import {CreateComponent} from "../../category/create/create.component";
 
 
 @NgModule({
   imports: [
-      CategoryModule,
     CommonModule,
     RouterModule.forChild(ManagerLayoutRoutes),
     FormsModule,
@@ -35,6 +35,8 @@ import {CategoryModule} from "../../category/category.module";
     HomeComponent,
     UserComponent,
     QuizComponent,
+      ListComponent,
+      CreateComponent,
     ListTestComponent,
     CreateTestComponent,
     TablesComponent,
