@@ -3,9 +3,10 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-12" style="margin-top: 20px">
+        <div class="col-12" style="margin-top: 100px; margin: auto">
 
             <div class="container" id="container">
+
                 <div class="form-container sign-up-container">
                     <form action="#">
                         <h1>Create Account</h1>
@@ -16,28 +17,51 @@
 <!--                            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
                         </div>
                         <span>or use your email for registration</span>
-                        <div class="example-container">
+                        <div class="register-container">
 <!--                            USERNAME-->
-                            <mat-form-field appearance="fill">
-                                <mat-label>Enter your Username</mat-label>
-                                <input name="userName" #userName="ngModel" matInput placeholder="YourUsername" [(ngModel)]="form.userName" required minlength="6">
+                            <mat-form-field appearance="fill" style="width: 250px">
+                                <mat-label>Username</mat-label>
+                                <input name="username" #username="ngModel" matInput placeholder="YourUsername" [(ngModel)]="form.username" required minlength="6">
                                 <mat-icon color="primary" matSuffix>account_box</mat-icon>
-                                <mat-error *ngIf="userName.hasError('required')">UserName is required!</mat-error>
-                                <mat-error *ngIf="userName.hasError('minlength')">UserName must have at least 3 characters!</mat-error>
+                                <mat-error *ngIf="username.hasError('required')">UserName is required!</mat-error>
+                                <mat-error *ngIf="username.hasError('minlength')">UserName must have at least 3 characters!</mat-error>
                             </mat-form-field>
 <!--                            EMAIL-->
-                            <mat-form-field appearance="fill">
-                                <mat-label>Enter your Email</mat-label>
-                                <input [formControl]="mailFormControl" name="email"  matInput placeholder="YourEmail" [(ngModel)]="form.email" required>
+                            <mat-form-field appearance="fill" style="width: 250px">
+                                <mat-label>Email</mat-label>
+                                <input [formControl]="mailFormControl" name="email"  matInput placeholder="YourEmail" [(ngModel)]="form.email">
                                 <mat-icon color="primary" matSuffix>alternate_email</mat-icon>
                                 <mat-error *ngIf="mailFormControl.hasError('required')">Mail is required!</mat-error>
-                                <mat-error *ngIf="mailFormControl.hasError('email')">Email is invalid! Example: youremail@gmail.com</mat-error>
+                                <mat-error *ngIf="mailFormControl.hasError('email')">Email is invalid! Ex: ye@gmail.com</mat-error>
                             </mat-form-field>
-<!--                            <mat-form-field appearance="fill">-->
-<!--                                <mat-label>Enter your email</mat-label>-->
-<!--                                <input matInput placeholder="pat@example.com" [formControl]="email" required>-->
-<!--                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
-<!--                            </mat-form-field>-->
+
+<!--                            PASSWORD-->
+                            <div class="password-container">
+                                <mat-form-field appearance="fill" style="width: 250px">
+                                    <mat-label>Password</mat-label>
+                                    <input [(ngModel)]="form.password" #password=ngModel name="password" matInput [type]="hide ? 'password' : 'text'" required minlength="6" pattern="^([A-Z]{1})([a-z]{4,})">
+                                    <button color="primary" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="password.hasError('required')">Password is required!</mat-error>
+                                    <mat-error *ngIf="password.hasError('minlength')">Password must have at least 6 characters</mat-error>
+                                    <mat-error *ngIf="password.hasError('pattern')">First letter should be capitalized</mat-error>
+                                </mat-form-field>
+                            </div>
+
+<!--                            CONFIRM PASSWORD-->
+                            <div class="password-container">
+                                <mat-form-field appearance="fill" style="width: 250px">
+                                    <mat-label>Confirm Password</mat-label>
+                                    <input [formControl]="confirmPasswordFormControl" name="confirmPassword" matInput [type]="hide ? 'password' : 'text'" pattern="^([A-Z]{1})([a-z]{4,})">
+                                        <mat-icon color="primary" matSuffix>password</mat-icon>
+                                    <mat-error *ngIf="confirmPasswordFormControl.hasError('pattern')">Doest match with password</mat-error>
+                                </mat-form-field>
+                                <br>
+                                <br>
+                            </div>
+
+
                         </div>
                         <button id="singUp">Sign Up</button>
                     </form>
@@ -53,21 +77,22 @@
                         </div>
                         <span>or use your account</span>
 
-                            <mat-form-field appearance="outline" style="width: 250px">
-                                <mat-label>Account</mat-label>
-                                <input matInput placeholder="input your account">
-                                <mat-icon matSuffix>input</mat-icon>
-                            </mat-form-field>
 
-
-                        <mat-form-field appearance="outline" style="width: 250px">
-                            <mat-label>Password</mat-label>
-                            <input type="password" matInput placeholder="input your password">
+                        <mat-form-field appearance="fill" style="width: 250px">
+                            <mat-label>Account</mat-label>
+                            <input matInput>
                             <mat-icon matSuffix>input</mat-icon>
-                            <mat-hint>Hint</mat-hint>
                         </mat-form-field>
 
-
+                        <div class="password-container">
+                            <mat-form-field appearance="fill" style="width: 250px">
+                                <mat-label>Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'">
+                                <button color="primary" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
 
                         <a href="#">Forgot your password?</a>
                         <button id="singIn">Sign In</button>

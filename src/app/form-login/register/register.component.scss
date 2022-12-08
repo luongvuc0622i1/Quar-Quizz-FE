@@ -43,6 +43,7 @@ a {
   margin: 15px 0;
 }
 
+
 button {
   border-radius: 20px;
   border: 1px solid #FF4B2B;
@@ -96,8 +97,9 @@ input {
   position: relative;
   overflow: hidden;
   width: 768px;
-  max-width: 100%;
-  min-height: 700px;
+  max-width: 1000%;
+  min-height: 850px;
+  padding: unset;
 }
 
 .form-container {
@@ -250,6 +252,23 @@ footer a {
   text-decoration: none;
 }
 
-.example-container mat-form-field + mat-form-field {
+.register-container mat-form-field + mat-form-field {
   margin-left: 8px;
+}
+
+.password-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.password-right-align {
+  text-align: right;
+}
+
+input.password-right-align::-webkit-outer-spin-button,
+input.password-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.password-right-align {
+  -moz-appearance: textfield;
 }
