@@ -20,6 +20,7 @@ import {ListTestComponent} from "../../tests/crud/list-test/list-test.component"
 import {CreateTestComponent} from "../../tests/crud/create-test/create-test.component";
 import {ListComponent} from "../../category/list/list.component";
 import {CreateComponent} from "../../category/create/create.component";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {CreateComponent} from "../../category/create/create.component";
     FormsModule,
     LbdModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   declarations: [
     HomeComponent,

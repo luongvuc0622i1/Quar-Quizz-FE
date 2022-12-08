@@ -14,7 +14,10 @@ import {Category} from "../../model/category";
 export class CreateTestComponent implements OnInit {
   levels: Level[] = [];
   quizzes: Quiz[] = [];
+  quizzesChoice: Quiz[] = [];
   categories: Category[] = [];
+  categoriesChoice: Category[] = [];
+  limit: number = 0;
 
   constructor(private testService: TestService) { }
 
@@ -25,7 +28,6 @@ export class CreateTestComponent implements OnInit {
   testForm: FormGroup = new FormGroup({
     name: new FormControl(),
     level: new FormControl(),
-    quiz: new FormControl(),
     category: new FormControl(),
     passScore: new FormControl(),
     maxTime: new FormControl(),
@@ -34,7 +36,7 @@ export class CreateTestComponent implements OnInit {
   submit(){
     const test= this.testForm.value;
     console.log(test);
-    const test1 = this.testService.change(test);
+    const test1 = this.change(test);
     console.log(test1);
     this.testService.save(test1).subscribe(() =>{
       this.testForm.reset();
@@ -54,5 +56,42 @@ export class CreateTestComponent implements OnInit {
     this.testService.getCategories().subscribe(categoryList => {
       this.categories = categoryList;
     });
+  }
+
+  change(test: any) {
+    let id;
+    let arCategory = [];
+    let arLevel;
+    let arQuiz= [];
+    let test1;
+    for (let i = 0; i < this.categoriesChoice.length; i++) {
+      id = this.categoriesChoice[i].id;
+      arCategory.push({id});
+    }
+    for (let i = 0; i < this.quizzesChoice.length; i++) {
+      id = this.quizzesChoice[i].id;
+      arQuiz.push({id});
+    }
+    for (let i = 0; i < test.level.length; i++) {
+      id = test.level[i];
+      arLevel = {id};
+    }
+    test1 = {name:test.name, level:arLevel, quizzes:arQuiz, passScore:test.passScore, categories:arCategory, maxTime:test.maxTime};
+    return test1;
+  }
+
+  choose(quiz: any) {
+    if (this.quizzesChoice.length <= this.limit-1) {
+      this.quizzesChoice.push(quiz);
+    }
+  }
+
+  inputNOQ(value: number) {
+    this.limit = value;
+  }
+
+  choiceCategory(value: any) {
+    console.log(value);
+    this.categoriesChoice.push(value);
   }
 }

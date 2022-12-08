@@ -34,32 +34,10 @@ export class TestService {
   }
 
   getQuizzes(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(API_URL + '/quiz');
+    return this.http.get<Quiz[]>(API_URL + '/quizzes');
   }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(API_URL + '/category');
-  }
-
-  change(test: any) {
-    let id;
-    let arCategory = [];
-    let arLevel;
-    let arQuiz= [];
-    let test1;
-    for (let i = 0; i < test.category.length; i++) {
-      id = test.category[i];
-      arCategory.push({id});
-    }
-    for (let i = 0; i < test.quiz.length; i++) {
-      id = test.quiz[i];
-      arQuiz.push({id});
-    }
-    for (let i = 0; i < test.level.length; i++) {
-      id = test.level[i];
-      arLevel = {id};
-    }
-    test1 = {name:test.name, level:arLevel, quizzes:arQuiz, passScore:test.passScore, categories:arCategory, maxTime:test.maxTime};
-    return test1;
   }
 }

@@ -1,4 +1,7 @@
+import {Level} from "./level";
+
 export interface Quiz {
     id?: number,
-    name?: string
+    name?: string,
+    level?: Level
 }
