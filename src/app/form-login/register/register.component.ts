@@ -2,7 +2,6 @@ import {AfterContentChecked, AfterViewInit, Component, OnInit} from '@angular/co
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {SignUpForm} from "../model/SignUpForm";
-import swal from "sweetalert";
 
 @Component({
   selector: 'app-register',

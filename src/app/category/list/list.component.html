@@ -8,7 +8,7 @@
                         <p class="category">This is table of test list</p>
                     </div>
                     <div class="header" style="float: right">
-                        <button [routerLink]="['/manager/category/create']" class="btn btn-info btn-fill pull-right">Create New category</button>
+                        <button [routerLink]="['/manager/category/create']" class="btn btn-warning btn-fill pull-right">Create New category</button>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
@@ -24,7 +24,7 @@
                             <tr *ngFor="let categoryS of category; index as i">
                                 <td>{{i + 1}}</td>
                                 <td>{{categoryS.name}}</td>
-                                <td><a [routerLink]="['/manager/category/',categoryS.id]">delete</a></td>
+                                <td><a [routerLink]="['/manager/categories/',categoryS.id]">delete</a></td>
                                 <td></td>
                             </tr>
                             </tbody>
