@@ -1,4 +1,4 @@
-export class SignInForm {
+export class LoginForm {
     username: string;
     password: string;
 
