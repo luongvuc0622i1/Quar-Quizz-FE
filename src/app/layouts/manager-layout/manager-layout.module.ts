@@ -25,11 +25,8 @@ import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.compo
 import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
 import {MatTableModule} from "@angular/material/table";
 import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.component";
-<<<<<<< HEAD
 import {DeleteComponent} from "../../category/delete/delete.component";
-=======
 import {MatExpansionModule} from "@angular/material/expansion";
->>>>>>> a61f658e229113216e4909c87d5cd9988d4b50db
 
 
 @NgModule({
