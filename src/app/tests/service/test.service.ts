@@ -21,7 +21,7 @@ export class TestService {
     return this.http.get<Test[]>(API_URL + '/tests');
   }
 
-  findById(id: number) {
+  findById(id: number): Observable<Test> {
     return this.http.get<Test>(`${API_URL}/tests/${id}`);
   }
 
