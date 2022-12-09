@@ -7,13 +7,14 @@ import {ManagerLayoutComponent} from "../layouts/manager-layout/manager-layout.c
 export const FormLoginRouting: Routes = [
   { path: 'profile',       component: UserComponent},
   { path: 'register',      component: RegisterComponent },
-  { path: 'manager',
-    component: ManagerLayoutComponent,
-    children: [
-  {
-    path: '',
-    loadChildren: () => import('../layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
-  }]}
+  { path: '**',      component: ManagerLayoutComponent }
+  // { path: 'manager',
+  //   component: ManagerLayoutComponent,
+  //   children: [
+  // {
+  //   path: '/#/manager',
+  //   loadChildren: () => import('../layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
+  // }]}
 ]
 
 @NgModule({

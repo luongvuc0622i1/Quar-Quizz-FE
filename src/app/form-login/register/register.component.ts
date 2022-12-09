@@ -4,6 +4,7 @@ import {AuthService} from "../service/auth.service";
 import {SignUpForm} from "../model/SignUpForm";
 import {LoginForm} from "../model/LoginForm";
 import {TokenService} from "../service/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   message: string;
 
   constructor(private authService: AuthService,
-              private tokenService: TokenService) { }
+              private tokenService: TokenService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -124,7 +126,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
         this.statusLogin = 'Login Success!';
 
-        return;
+        this.router.navigate(['manager']);
       }
       // @ts-ignore
       if (data.message === 'lock') {
