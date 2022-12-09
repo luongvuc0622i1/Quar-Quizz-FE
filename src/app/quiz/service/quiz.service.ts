@@ -38,7 +38,7 @@ export class QuizService {
     }
 
     getLevels(): Observable<Level[]> {
-        return this.http.get<Level[]>(API_URL + '/quizzes/level');
+        return this.http.get<Level[]>(API_URL + '/levels');
     }
 
     getTypeQuizzes(): Observable<TypeQuizzes[]> {
@@ -46,7 +46,7 @@ export class QuizService {
     }
 
     getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>(API_URL + '/category');
+        return this.http.get<Category[]>(API_URL + '/manager/categories');
     }
 
     change(quiz: any) {

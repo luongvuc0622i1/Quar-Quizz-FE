@@ -15,6 +15,7 @@
     "sourceMap": true,
     "target": "es2020",
     "allowJs":true,
+    "esModuleInterop": true,
     "typeRoots": [
       "../node_modules/@types"
     ]
