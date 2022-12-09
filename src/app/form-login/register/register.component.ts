@@ -2,7 +2,6 @@ import {AfterContentChecked, AfterViewInit, Component, OnInit} from '@angular/co
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {SignUpForm} from "../model/SignUpForm";
-import swal from "sweetalert";
 import {LoginForm} from "../model/LoginForm";
 import {TokenService} from "../service/token.service";
 
@@ -122,13 +121,26 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.tokenService.setToken(data.token);
         this.tokenService.setUsername(data.username);
         this.tokenService.setRoleSet(data.roleSet);
+
+        this.statusLogin = 'Login Success!';
+
         return;
       }
-    }, we => {
+      // @ts-ignore
+      if (data.message === 'lock') {
+            this.statusLogin = 'Your account has been disabled, please contact admin!';
+            return;
+      }
+
+    },
+            we => {
       console.log('we of login ---> ', we);
       if (we.status == 400) {
         console.log('Login Failed!');
-        this.statusLogin = 'Login Failed! Please check your username or password!';
+        this.statusLogin = 'Login Failed! Please check your account or password!';
+      }
+      else {
+        this.statusLogin = 'Error!!!!!!';
       }
     })
 
