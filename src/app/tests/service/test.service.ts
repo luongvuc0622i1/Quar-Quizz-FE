@@ -21,7 +21,7 @@ export class TestService {
     return this.http.get<Test[]>(API_URL + '/tests');
   }
 
-  findById(id: number) {
+  findById(id: number): Observable<Test> {
     return this.http.get<Test>(`${API_URL}/tests/${id}`);
   }
 
@@ -38,6 +38,6 @@ export class TestService {
   }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(API_URL + '/category');
+    return this.http.get<Category[]>(API_URL + '/manager/categories');
   }
 }

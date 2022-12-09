@@ -4,8 +4,8 @@ export interface Test {
     id?: number,
     name?: string,
     level?: Level,
-    quiz?: any,
-    category?: any,
+    quizzes?: any,
+    categories?: any,
     passScore?: number,
     maxTime?: string
 }

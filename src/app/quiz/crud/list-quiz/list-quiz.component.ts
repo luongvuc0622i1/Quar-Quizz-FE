@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../../model/quiz";
 import {QuizService} from "../../service/quiz.service";
-import {MatTableDataSource} from "@angular/material/table";
+import {resourceChangeTicket} from "@angular/compiler-cli/src/ngtsc/core";
 
-let quizzes: Quiz[];
+
 @Component({
   selector: 'app-list-quiz',
   templateUrl: './list-quiz.component.html',
   styleUrls: ['./list-quiz.component.scss']
 })
 export class ListQuizComponent implements OnInit {
-
+  quizzes: Quiz[] =[];
 
   constructor(private quizService: QuizService) {
   }
@@ -18,17 +18,35 @@ export class ListQuizComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
   }
+  ngAfterViewInit(){
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        // @ts-ignore
+        var value = $(this).val().toLowerCase();
+        // @ts-ignore
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  };
+
 
   getAll() {
     this.quizService.getAll().subscribe(quizList => {
-    quizzes = quizList;
+    this.quizzes = quizList;
     });
   }
-  displayedColumns: string[] = ['id', 'name', 'typeQuizzes', 'level','category'];
-  dataSource = new MatTableDataSource(quizzes);
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  selectedId : any = '';
+
+  private getChild(quiz: Quiz, id: number) {
+    // Check if already expanded
+    if(this.selectedId == id){
+      this.selectedId = '';
+    }else{
+      this.selectedId = id;
+    }
   }
+
 }

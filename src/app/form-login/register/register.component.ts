@@ -2,6 +2,9 @@ import {AfterContentChecked, AfterViewInit, Component, OnInit} from '@angular/co
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {SignUpForm} from "../model/SignUpForm";
+import {LoginForm} from "../model/LoginForm";
+import {TokenService} from "../service/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -10,7 +13,11 @@ import {SignUpForm} from "../model/SignUpForm";
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
 
-  status = 'Please fill in the form to create account!'
+  formLogin: any = {};
+
+  status = 'Please fill in the form to create account!';
+
+  statusLogin = 'Please fill in the form to create account!';
 
   hide = true;
 
@@ -18,9 +25,13 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   signUpForm: SignUpForm;
 
+  loginForm: LoginForm;
+
   message: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private tokenService: TokenService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -97,7 +108,43 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       //   // this.status = 'Username is existed! Please try again!';
       // }
     )
+  }
 
+  login() {
+    console.log('Vao login roi!')
+    this.loginForm = new LoginForm(
+        this.form.username,
+        this.form.password
+    );
+    this.authService.login(this.form).subscribe(data => {
+      console.log('Login data --- >', data);
+      if (data.token != undefined) {
+        this.tokenService.setID(data.id);
+        this.tokenService.setToken(data.token);
+        this.tokenService.setUsername(data.username);
+        this.tokenService.setRoleSet(data.roleSet);
+
+        this.statusLogin = 'Login Success!';
+
+        this.router.navigate(['manager']);
+      }
+      // @ts-ignore
+      if (data.message === 'lock') {
+            this.statusLogin = 'Your account has been disabled, please contact admin!';
+            return;
+      }
+
+    },
+            we => {
+      console.log('we of login ---> ', we);
+      if (we.status == 400) {
+        console.log('Login Failed!');
+        this.statusLogin = 'Login Failed! Please check your account or password!';
+      }
+      else {
+        this.statusLogin = 'Error!!!!!!';
+      }
+    })
 
 
   }
