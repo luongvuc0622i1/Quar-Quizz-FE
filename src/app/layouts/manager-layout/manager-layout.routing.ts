@@ -15,17 +15,19 @@ import {DeleteComponent} from "../../category/delete/delete.component";
 import {ListQuizComponent} from "../../quiz/crud/list-quiz/list-quiz.component";
 import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
 import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.component";
+import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.component";
 
 export const ManagerLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user',           component: UserComponent },
-    {path:'category',    component:ListComponent},
-    {path : 'category/create' ,  component:CreateComponent},
-    { path: 'quiz/list',          component: ListQuizComponent },
-    { path: 'quiz/create',          component: CreateQuizComponent },
-    { path: 'quiz/update',          component: UpdateQuizComponent },
-    { path: 'test/list',           component: ListTestComponent },
-    { path: 'test/create',           component: CreateTestComponent },
+    { path:'category',        component: ListComponent},
+    { path: 'category/create',component: CreateComponent},
+    { path: 'quiz/list',      component: ListQuizComponent },
+    { path: 'quiz/create',    component: CreateQuizComponent },
+    { path: 'quiz/update',    component: UpdateQuizComponent },
+    { path: 'test/list',      component: ListTestComponent },
+    { path: 'test/create',    component: CreateTestComponent },
+    { path: 'test/detail',    component: DetailTestComponent },
     { path: 'table',          component: TablesComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
