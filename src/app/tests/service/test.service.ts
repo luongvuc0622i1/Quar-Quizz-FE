@@ -38,6 +38,6 @@ export class TestService {
   }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(API_URL + '/category');
+    return this.http.get<Category[]>(API_URL + '/manager/categories');
   }
 }

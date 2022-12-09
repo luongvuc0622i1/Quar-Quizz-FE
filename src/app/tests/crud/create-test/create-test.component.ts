@@ -26,6 +26,20 @@ export class CreateTestComponent implements OnInit {
     this.getAll();
   }
 
+  ngAfterViewInit() {
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        // @ts-ignore
+        var value = $(this).val().toLowerCase();
+        console.log(value);
+        // @ts-ignore
+        $("#myList tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  }
+
   testForm: FormGroup = new FormGroup({
     name: new FormControl("", [Validators.required, Validators.minLength(3)]),
     level: new FormControl("", [Validators.required]),
