@@ -25,6 +25,7 @@ import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.compo
 import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
 import {MatTableModule} from "@angular/material/table";
 import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.component";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.comp
         NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
         ReactiveFormsModule,
         MatCheckboxModule,
-        MatTableModule
+        MatTableModule,
+        MatSelectModule
     ],
     declarations: [
         HomeComponent,
