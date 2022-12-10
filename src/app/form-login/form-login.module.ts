@@ -19,10 +19,11 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserComponent} from "../user/user.component";
 
+
 @NgModule({
   declarations: [
     RegisterComponent,
-    UserComponent
+      UserComponent
   ],
   imports: [
     HttpClientModule,
@@ -34,7 +35,7 @@ import {UserComponent} from "../user/user.component";
     BrowserAnimationsModule,
     MatFormFieldModule,
     CommonModule,
-    RouterModule.forRoot(FormLoginRouting),
+    RouterModule.forChild(FormLoginRouting),
     MatCardModule,
     MatIconModule,
     ReactiveFormsModule,
