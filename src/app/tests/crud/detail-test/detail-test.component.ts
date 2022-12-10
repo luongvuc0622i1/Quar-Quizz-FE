@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Test} from "../../model/test";
-import {TestService} from "../../service/test.service";
+import {TestService} from "../../../service/test/test.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {Observable} from "rxjs";
-import {FormControl, FormGroup} from "@angular/forms";
+import {Test} from "../../../model/test";
 
 @Component({
   selector: 'app-detail-test',
