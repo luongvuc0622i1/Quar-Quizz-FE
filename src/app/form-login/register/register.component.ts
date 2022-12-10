@@ -67,12 +67,12 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   mailFormControl = new FormControl('', [
-      Validators.email,
-      Validators.required
-      ]);
+    Validators.email,
+    Validators.required
+  ]);
 
   confirmPasswordFormControl = new FormControl('', [
-      Validators.required
+    Validators.required
   ])
 
   register() {
@@ -83,12 +83,12 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     );
 
     this.authService.signUp(this.signUpForm).subscribe(data => {
-      console.log('data ---> ', data);
-      if (data != null) {
-        this.status = 'Register Success!';
-        return;
-      }
-    }, we => {
+          console.log('data ---> ', data);
+          if (data != null) {
+            this.status = 'Register Success!';
+            return;
+          }
+        }, we => {
           console.log('we ---> ', we);
           console.log('message --->', we.error.message);
           if (we.error.message === 'nouser') {
@@ -101,12 +101,12 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.status = 'Mail invalid! Please try again!';
           }
         }
-      //       error => {
-      // console.log('error ---> ', error);
-      // if (error.we.error.message === 'nouser') {
-      //   console.log('message:', error.we.error.message);
-      //   // this.status = 'Username is existed! Please try again!';
-      // }
+        //       error => {
+        // console.log('error ---> ', error);
+        // if (error.we.error.message === 'nouser') {
+        //   console.log('message:', error.we.error.message);
+        //   // this.status = 'Username is existed! Please try again!';
+        // }
     )
   }
 
@@ -117,34 +117,34 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.form.password
     );
     this.authService.login(this.form).subscribe(data => {
-      console.log('Login data --- >', data);
-      if (data.token != undefined) {
-        this.tokenService.setID(data.id);
-        this.tokenService.setToken(data.token);
-        this.tokenService.setUsername(data.username);
-        this.tokenService.setRoleSet(data.roleSet);
+          console.log('Login data --- >', data);
+          if (data.token != undefined) {
+            this.tokenService.setID(data.id);
+            this.tokenService.setToken(data.token);
+            this.tokenService.setUsername(data.username);
+            this.tokenService.setRoleSet(data.roleSet);
 
-        this.statusLogin = 'Login Success!';
+            this.statusLogin = 'Login Success!';
 
-        this.router.navigate(['manager']);
-      }
-      // @ts-ignore
-      if (data.message === 'lock') {
+            this.router.navigate(['manager']);
+          }
+          // @ts-ignore
+          if (data.message === 'lock') {
             this.statusLogin = 'Your account has been disabled, please contact admin!';
             return;
-      }
+          }
 
-    },
-            we => {
-      console.log('we of login ---> ', we);
-      if (we.status == 400) {
-        console.log('Login Failed!');
-        this.statusLogin = 'Login Failed! Please check your account or password!';
-      }
-      else {
-        this.statusLogin = 'Error!!!!!!';
-      }
-    })
+        },
+        we => {
+          console.log('we of login ---> ', we);
+          if (we.status == 400) {
+            console.log('Login Failed!');
+            this.statusLogin = 'Login Failed! Please check your account or password!';
+          }
+          else {
+            this.statusLogin = 'Error!!!!!!';
+          }
+        })
 
 
   }
