@@ -21,7 +21,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     HttpClientModule,
