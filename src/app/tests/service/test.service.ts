@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Test} from "../model/test";
 import {Observable} from "rxjs";
 import {Level} from "../model/level";
 import {Quiz} from "../model/quiz";
 import {Category} from "../model/category";
+import {environment} from "../../../environments/environment";
 
-// const API_URL=`${environment.apiUrl}`
-const API_URL=`http://localhost:8080`
+const API_URL=`${environment.apiUrl}`
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +18,15 @@ export class TestService {
   }
 
   getAll(): Observable<Test[]> {
-    return this.http.get<Test[]>(API_URL + '/tests');
+    return this.http.get<Test[]>(API_URL + '/manager/tests');
   }
 
   findById(id: number): Observable<Test> {
-    return this.http.get<Test>(`${API_URL}/tests/${id}`);
+    return this.http.get<Test>(`${API_URL}/manager/tests/${id}`);
   }
 
   save(test: Test): Observable<Test> {
-    return this.http.post<Test>(API_URL + `/tests`, test);
+    return this.http.post<Test>(API_URL + `/manager/tests`, test);
   }
 
   getLevels(): Observable<Level[]> {
