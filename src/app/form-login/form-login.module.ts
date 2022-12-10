@@ -22,7 +22,7 @@ import {UserComponent} from "../user/user.component";
 @NgModule({
   declarations: [
     RegisterComponent,
-      UserComponent
+    UserComponent
   ],
   imports: [
     HttpClientModule,

@@ -133,7 +133,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.statusLogin = 'Your account has been disabled, please contact admin!';
             return;
           }
-
         },
         we => {
           console.log('we of login ---> ', we);
@@ -145,10 +144,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.statusLogin = 'Error!!!!!!';
           }
         })
-
-
-  }
-
-
+    }
 
 }

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {TestService} from "../../service/test.service";
+import {TestService} from "../../../service/test/test.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Test} from "../../model/test";
-import {Level} from "../../model/level";
-import {Quiz} from "../../model/quiz";
-import {Category} from "../../model/category";
+import {Level} from "../../../model/level";
+import {Quiz} from "../../../model/quiz";
+import {Category} from "../../../model/category";
 
 @Component({
   selector: 'app-create-test',

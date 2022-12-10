@@ -71,8 +71,11 @@
                     <form (ngSubmit)="f.form.valid && login()" #f="ngForm">
                         <h1>Sign in</h1>
                         <mat-error class="alert alert-primary" style="color: red">{{statusLogin}}</mat-error>
+                        <button class="btn btn-primary" [routerLink]="'profile'">Link</button>
+                        <a [routerLink]="'/account/profile'">Link</a>
                         <button class="btn btn-primary" [routerLink]="['account/profile']">Link</button>
                         <!--                        <a href="../../user/user.component.spec.ts">Link</a>-->
+
 
                         <div class="social-container">
                             <mat-icon color="primary" matSuffix>facebook</mat-icon>
