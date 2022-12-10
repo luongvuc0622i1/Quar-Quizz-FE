@@ -50,17 +50,15 @@ export class NavbarComponent implements OnInit{
         }
     };
 
-    getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
+    // getPath(){
+    //     let path = this.location.prepareExternalUrl(this.location.path());
+    //     let path2 = path.split("/").splice(1, 2).join("/");
+    //     return "http://localhost:8080"+path2;
+    // }
 
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
-              return this.listTitles[item].title;
-          }
-      }
-      return '😄';
+    getTitle(){
+        let path = this.location.prepareExternalUrl(this.location.path());
+        let title = path.split("/")[2];
+        return title;
     }
 }
