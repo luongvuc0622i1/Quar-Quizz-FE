@@ -134,7 +134,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             return;
       }
 
-    },
+    }, //
             we => {
       console.log('we of login ---> ', we);
       if (we.status == 400) {
