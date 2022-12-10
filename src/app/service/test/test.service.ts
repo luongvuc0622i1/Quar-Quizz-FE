@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Test} from "../model/test";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Level} from "../model/level";
-import {Quiz} from "../model/quiz";
-import {Category} from "../model/category";
 import {environment} from "../../../environments/environment";
+import {Test} from "../../model/test";
+import {Level} from "../../model/level";
+import {Quiz} from "../../model/quiz";
+import {Category} from "../../model/category";
 
 const API_URL=`${environment.apiUrl}`
 

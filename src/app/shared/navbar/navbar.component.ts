@@ -50,12 +50,6 @@ export class NavbarComponent implements OnInit{
         }
     };
 
-    // getPath(){
-    //     let path = this.location.prepareExternalUrl(this.location.path());
-    //     let path2 = path.split("/").splice(1, 2).join("/");
-    //     return "http://localhost:8080"+path2;
-    // }
-
     getTitle(){
         let path = this.location.prepareExternalUrl(this.location.path());
         let title = path.split("/")[2];
