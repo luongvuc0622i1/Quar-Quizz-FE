@@ -13,7 +13,20 @@ export const FormLoginRouting: Routes = [
   {
     path: 'manager',
     loadChildren: () => import('../layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
-  }]}
+  }]},
+    { path: 'register',       component: RegisterComponent},
+    { path: 'profile',       component: UserComponent},
+    // {path:'**' ,
+    //     redirectTo: 'profile',
+    // pathMatch:'full'}
+  // { path: 'manager',      component: ManagerLayoutComponent }
+  // { path: 'manager',
+  //   component: ManagerLayoutComponent,
+  //   children: [
+  // {
+  //   path: '/#/manager',
+  //   loadChildren: () => import('../layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
+  // }]}
 ]
 
 @NgModule({

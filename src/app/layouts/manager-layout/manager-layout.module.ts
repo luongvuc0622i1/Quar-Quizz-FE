@@ -25,6 +25,7 @@ import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.compo
 import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
 import {MatTableModule} from "@angular/material/table";
 import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.component";
+import {DeleteComponent} from "../../category/delete/delete.component";
 import {MatExpansionModule} from "@angular/material/expansion";
 
 
@@ -42,12 +43,12 @@ import {MatExpansionModule} from "@angular/material/expansion";
     ],
     declarations: [
         HomeComponent,
-        UserComponent,
         ListQuizComponent,
         UpdateQuizComponent,
         CreateQuizComponent,
         ListComponent,
         CreateComponent,
+        DeleteComponent,
         ListTestComponent,
         DetailTestComponent,
         CreateTestComponent,

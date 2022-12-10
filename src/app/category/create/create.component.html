@@ -8,19 +8,27 @@
                     </div>
                     <div class="content">
                         <form [formGroup]="categoryForm" (ngSubmit)="submit()">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>id</label>
-                                        <input type="number" class="form-control here" placeholder="id" formControlName="id">
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-4">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>id</label>-->
+<!--                                        <input type="number" class="form-control here" placeholder="id" formControlName="id">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>name</label>
-                                        <input type="text" class="form-control here" placeholder="name" formControlName="name">
+                                        <input type="text" class="form-control here" placeholder="name category" formControlName="name">
+                                        <div *ngIf="!name?.valid && (name?.dirty || name?.touched)">
+                                            <div [hidden]="!name?.errors?.['required']">
+                                                <p style="color: orange">Name is required</p>
+                                            </div>
+                                            <div [hidden]="!name?.errors?.['minlength']">
+                                                <p style="color: orange">Name min length 3</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +86,8 @@
 <!--                                    </div>-->
 <!--                                </div>-->
 <!--                            </div>-->
-                            <button type="submit" class="btn btn-info btn-fill pull-right">create</button>
+                            <button type="submit" class="btn btn-warning btn-fill pull-right" [disabled]="!categoryForm.valid">create</button>
+                            <button [routerLink]="['/manager/category']" type="submit" class="btn btn-warning btn-fill pull-right">BackList</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -94,8 +103,8 @@
                             <a href="#">
                                 <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
 
-                                <h4 class="title">Mike Andrew<br />
-                                    <small>michael24</small>
+                                <h4 class="title">{{category.id}}<br />
+                                    <small>{{category.name}}</small>
                                 </h4>
                             </a>
                         </div>

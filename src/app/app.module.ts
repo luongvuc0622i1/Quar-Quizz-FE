@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
@@ -18,6 +18,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonModule} from "@angular/material/button";
+import {Auth_interceptor} from "./auth_interceptor";
 
 @NgModule({
     imports: [
@@ -35,7 +36,12 @@ import {MatButtonModule} from "@angular/material/button";
         ManagerLayoutComponent,
         FormLoginComponent
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: Auth_interceptor, multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

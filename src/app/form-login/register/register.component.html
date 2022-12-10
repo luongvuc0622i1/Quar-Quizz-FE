@@ -73,6 +73,9 @@
                         <mat-error class="alert alert-primary" style="color: red">{{statusLogin}}</mat-error>
                         <button class="btn btn-primary" [routerLink]="'profile'">Link</button>
                         <a [routerLink]="'/account/profile'">Link</a>
+                        <button class="btn btn-primary" [routerLink]="['account/profile']">Link</button>
+<!--                        <a href="../../user/user.component.spec.ts">Link</a>-->
+
 
                         <div class="social-container">
                             <mat-icon color="primary" matSuffix>facebook</mat-icon>
@@ -106,8 +109,8 @@
                             </mat-form-field>
                         </div>
 
-                        <a href="#">Forgot your password?</a>
-                        <button id="singIn">Sign In</button>
+                        <a >Forgot your password?</a>
+                        <button id="singIn" [routerLink]="['account/profile']">Sign In</button>
                     </form>
                 </div>
                 <div class="overlay-container">

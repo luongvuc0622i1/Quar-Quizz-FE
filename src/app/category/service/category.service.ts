@@ -11,15 +11,15 @@ export class CategoryService {
 
     constructor(private http : HttpClient) { }
     getAll(): Observable<Category[]>{
-        return this.http.get<Category[]>(API_URL+'/category');
+        return this.http.get<Category[]>(API_URL+'/categories');
     }
     save(category:any):Observable<Category>{
-        return this.http.post<Category>(API_URL +'/category',category);
+        return this.http.post<Category>(API_URL +'/categories',category);
     }
     findById(id:number):Observable<Category>{
-        return this.http.get<Category>(`${API_URL}/category/${id}`);
+        return this.http.get<Category>(`${API_URL}/categories/${id}`);
     }
     delete(id:number):Observable<Category>{
-        return this.http.delete<Category>(`${API_URL}/category/${id}`);
+        return this.http.delete<Category>(`${API_URL}/categories/${id}`);
     }
 }
