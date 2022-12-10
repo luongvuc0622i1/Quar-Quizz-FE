@@ -43,7 +43,6 @@ import {MatExpansionModule} from "@angular/material/expansion";
     ],
     declarations: [
         HomeComponent,
-        UserComponent,
         ListQuizComponent,
         UpdateQuizComponent,
         CreateQuizComponent,

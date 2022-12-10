@@ -5,9 +5,12 @@ import {UserComponent} from "../user/user.component";
 import {ManagerLayoutComponent} from "../layouts/manager-layout/manager-layout.component";
 
 export const FormLoginRouting: Routes = [
-  { path: 'profile',       component: UserComponent},
-  { path: 'register',      component: RegisterComponent },
-  { path: '**',      component: ManagerLayoutComponent }
+    { path: 'register',       component: RegisterComponent},
+    { path: 'profile',       component: UserComponent},
+    // {path:'**' ,
+    //     redirectTo: 'profile',
+    // pathMatch:'full'}
+  // { path: 'manager',      component: ManagerLayoutComponent }
   // { path: 'manager',
   //   component: ManagerLayoutComponent,
   //   children: [

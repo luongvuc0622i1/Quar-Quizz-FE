@@ -4,6 +4,7 @@ import {CategoryService} from "../service/category.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Category} from "../inteface/category";
 import {data} from "jquery";
+import {HttpResponseBase} from "@angular/common/http";
 declare let swal : any;
 @Component({
   selector: 'app-delete',
@@ -52,6 +53,11 @@ getAll(){
               }, e => {
                   // console.log(e)
                   console.error(e + "👿");
+                  if(e.status==404){
+                      alert("error 👿");
+                  }else {
+                      alert("error 👿");
+                  }
               });
               // swal({
               //     title: "Delete Category",
@@ -73,9 +79,13 @@ getAll(){
               //         })
               //     }
               // })
-          } else {
+          }else {
+              // if(this.e.status ==404){
+              //     alert("error 👿");
+              // }
               alert("error 👿");
           }
   }
       // even : IDBRequestEventMap
+    e: HttpResponseBase;
 }

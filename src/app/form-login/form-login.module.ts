@@ -17,11 +17,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
+import {UserComponent} from "../user/user.component";
 
 @NgModule({
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+      UserComponent
   ],
   imports: [
     HttpClientModule,
@@ -33,7 +34,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     MatFormFieldModule,
     CommonModule,
-    RouterModule.forChild(FormLoginRouting),
+    RouterModule.forRoot(FormLoginRouting),
     MatCardModule,
     MatIconModule,
     ReactiveFormsModule,
