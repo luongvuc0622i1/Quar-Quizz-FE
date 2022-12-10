@@ -147,7 +147,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         })
 
 
+
   }
+
 
 
 
