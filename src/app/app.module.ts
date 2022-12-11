@@ -21,6 +21,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {Auth_interceptor} from "./auth_interceptor";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { HomePageComponent } from './home-page/home-page.component';
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
     imports: [
@@ -40,7 +43,9 @@ import {MatInputModule} from "@angular/material/input";
     declarations: [
         AppComponent,
         ManagerLayoutComponent,
-        FormLoginComponent
+        FormLoginComponent,
+        HomePageComponent,
+        UserLayoutComponent
     ],
     providers: [
         {

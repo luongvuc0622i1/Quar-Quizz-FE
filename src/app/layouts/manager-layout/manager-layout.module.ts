@@ -27,6 +27,8 @@ import {MatTableModule} from "@angular/material/table";
 import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.component";
 import {DeleteComponent} from "../../category/delete/delete.component";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatListModule} from "@angular/material/list";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
         ReactiveFormsModule,
         MatCheckboxModule,
         MatTableModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatListModule,
+        MatFormFieldModule
     ],
     declarations: [
         HomeComponent,
