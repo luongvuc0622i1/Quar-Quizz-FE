@@ -21,11 +21,12 @@ const routes: Routes =[
   {
     path: 'account',
     component: FormLoginComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./form-login/form-login.module').then(x => x.FormLoginModule)
-      }]},
+    // children: [
+    //   {
+    //     path: '',
+    //     loadChildren: () => import('./form-login/form-login.module').then(x => x.FormLoginModule)
+    //   }]
+  },
   {
     path: '**',
     redirectTo: 'dashboard'
