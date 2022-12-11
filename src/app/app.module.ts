@@ -19,6 +19,9 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonModule} from "@angular/material/button";
 import {Auth_interceptor} from "./auth_interceptor";
+import { HomePageComponent } from './home-page/home-page.component';
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
     imports: [
@@ -34,7 +37,9 @@ import {Auth_interceptor} from "./auth_interceptor";
     declarations: [
         AppComponent,
         ManagerLayoutComponent,
-        FormLoginComponent
+        FormLoginComponent,
+        HomePageComponent,
+        UserLayoutComponent
     ],
     providers: [
         {

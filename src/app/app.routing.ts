@@ -4,12 +4,13 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import {ManagerLayoutComponent} from "./layouts/manager-layout/manager-layout.component";
 import {FormLoginComponent} from "./form-login/form-login.component";
+import {HomePageComponent} from "./home-page/home-page.component";
+import {UserLayoutComponent} from "./layouts/user-layout/user-layout.component";
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    component: HomePageComponent
   }, {
     path: 'manager',
     component: ManagerLayoutComponent,
@@ -17,6 +18,13 @@ const routes: Routes =[
       {
         path: '',
         loadChildren: () => import('./layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
+      }]}, {
+    path: 'user',
+    component: UserLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./layouts/user-layout/user-layout.module').then(x => x.UserLayoutModule)
       }]},
   {
     path: 'account',
@@ -28,7 +36,7 @@ const routes: Routes =[
       }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
+    component: HomePageComponent
   }
 ];
 
