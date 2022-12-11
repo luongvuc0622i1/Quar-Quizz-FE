@@ -16,7 +16,7 @@ export class FormLoginComponent implements OnInit, AfterViewInit {
 
   formLogin: any = {};
 
-  status = 'Please fill in the form to create account!';
+  statusRegister = 'Please fill in the form to create account!';
 
   statusLogin = 'Please fill in the form to create account!';
 
@@ -77,29 +77,32 @@ export class FormLoginComponent implements OnInit, AfterViewInit {
   ])
 
   register() {
+
     this.signUpForm = new SignUpForm(
         this.form.username,
         this.form.email,
-        this.form.password
+        this.form.password,
+        // @ts-ignore
+        this.form.status
     );
 
     this.authService.signUp(this.signUpForm).subscribe(data => {
           console.log('data ---> ', data);
           if (data != null) {
-            this.status = 'Register Success!';
+            this.statusRegister = 'Register Success!';
             return;
           }
         }, we => {
           console.log('we ---> ', we);
           console.log('message --->', we.error.message);
           if (we.error.message === 'nouser') {
-            this.status = 'Username is existed! Please try again!';
+            this.statusRegister = 'Username is existed! Please try again!';
             return;
           } else if (we.error.message === 'noemail') {
-            this.status = 'Email is existed! Please try again!';
+            this.statusRegister = 'Email is existed! Please try again!';
             return;
           } else {
-            this.status = 'Mail invalid! Please try again!';
+            this.statusRegister = 'Mail invalid! Please try again!';
           }
         }
         //       error => {
@@ -109,6 +112,14 @@ export class FormLoginComponent implements OnInit, AfterViewInit {
         //   // this.status = 'Username is existed! Please try again!';
         // }
     )
+  }
+
+  comparePassword() {
+    if (this.password.value !== this.confirmPassword.value) {
+      this.confirmPassword.setErrors({confirmPassword: true});
+    } else {
+      this.confirmPassword.setErrors(null);
+    }
   }
 
   login() {

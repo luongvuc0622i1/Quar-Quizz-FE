@@ -18,14 +18,12 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserComponent} from "../user/user.component";
-import {ProfileComponent} from "./profile/profile.component";
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
       UserComponent,
-      ProfileComponent
   ],
   imports: [
     HttpClientModule,
