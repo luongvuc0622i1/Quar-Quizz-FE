@@ -12,7 +12,7 @@ export class TokenService {
 
   constructor() { }
 
-  public setID(id: any) {
+  public setID(id: string) {
     localStorage.removeItem(ID_KEY);
     localStorage.setItem(ID_KEY, id);
   }
@@ -23,7 +23,7 @@ export class TokenService {
 
   public setUsername(username: string) {
     localStorage.removeItem(USERNAME_KEY);
-    localStorage.setItem(ID_KEY, username);
+    localStorage.setItem(USERNAME_KEY, username);
   }
 
   public getUsername():string {
