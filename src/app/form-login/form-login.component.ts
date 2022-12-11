@@ -127,7 +127,7 @@ export class FormLoginComponent implements OnInit, AfterViewInit {
 
             this.statusLogin = 'Login Success!';
 
-            this.router.navigate(['profile']);
+            this.router.navigate(['/manager/dashboard']);
           }
           // @ts-ignore
           if (data.message === 'lock') {

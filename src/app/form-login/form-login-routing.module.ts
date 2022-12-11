@@ -8,7 +8,7 @@ import {ProfileComponent} from "./profile/profile.component";
 export const FormLoginRouting: Routes = [
   { path: 'register',      component: RegisterComponent },
   { path: '**',      component: ManagerLayoutComponent },
-  { path: 'profile',      component: ProfileComponent }
+  // { path: 'profile',      component: ProfileComponent }
   // { path: 'manager',
   //   component: ManagerLayoutComponent,
   //   children: [
