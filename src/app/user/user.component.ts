@@ -42,7 +42,7 @@ export class UserComponent implements OnInit {
       "newPassword": test.newPass
     };
     console.log(test1);
-    this.userService.update(2, test1).subscribe(() =>{
+    this.userService.update(test1).subscribe(() =>{
       this.changePasswordForm.reset();
       alert('Update done!');
     }, error => {
@@ -51,7 +51,7 @@ export class UserComponent implements OnInit {
   }
 
   getAll() {
-    this.userService.findById(2).subscribe(user => {
+    this.userService.findById().subscribe(user => {
       this.user = user;
       console.log(user);
       this.password = user.password;
