@@ -6,59 +6,85 @@ import {Category} from "../../../quiz/model/category";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TypeQuizzes} from "../../model/typequizzes";
 
-declare var $:any;
+declare var $: any;
+
 @Component({
     selector: 'app-create-quiz',
     templateUrl: './create-quiz.component.html',
     styleUrls: ['./create-quiz.component.scss']
 })
 export class CreateQuizComponent implements OnInit {
-    answers:string ="";
-    correct_answers:string ="";
-    names :string="";
     levels: Level[] = [];
-    typeQuizzes:TypeQuizzes[]=[];
+    typeQuizzes: TypeQuizzes[] = [];
     categories: Category[] = [];
     categoriesChoice: Category[] = [];
 
-    constructor(private quizService: QuizService) { }
+    option1: any;
+    option2: any;
+    option3: any;
+    option4: any;
 
-    ngOnInit():void {
+    constructor(private quizService: QuizService) {
+    }
+
+    ngOnInit(): void {
         this.getAll();
     }
 
     quizForm: FormGroup = new FormGroup({
         name: new FormControl("", [Validators.required]),
-        answer: new FormControl("", [Validators.required]),
+        answer1: new FormControl("", [Validators.required]),
+        answer2: new FormControl("", [Validators.required]),
+        answer3: new FormControl("", [Validators.required]),
+        answer4: new FormControl("", [Validators.required]),
         correct_answer: new FormControl("", [Validators.required]),
         level: new FormControl("", [Validators.required]),
-        typeQuiz: new FormControl("", [Validators.required])
+        typeQuiz: new FormControl("", [Validators.required]),
+        category: new FormControl("")
     })
 
-    get name(){
+    get name() {
         return this.quizForm.get('name')
     }
-    get answer(){
-        return this.quizForm.get('answer')
+
+    get answer1() {
+        return this.quizForm.get('answer1')
     }
-    get correctAnswer(){
+
+    get answer2() {
+        return this.quizForm.get('answer2')
+    }
+
+    get answer3() {
+        return this.quizForm.get('answer3')
+    }
+
+    get answer4() {
+        return this.quizForm.get('answer4')
+    }
+
+
+    get correctAnswer() {
         return this.quizForm.get('correct_answer')
     }
-    get level(){
+
+    get level() {
         return this.quizForm.get('level')
     }
-    get typeQuiz(){
+
+    get typeQuiz() {
         return this.quizForm.get('typeQuiz')
     }
 
-    submit(){
-        const quiz= this.quizForm.value;
+
+    submit() {
+        const quiz = this.quizForm.value;
         console.log(quiz);
         const quiz1 = this.change(quiz);
-        console.log(quiz);
-        this.quizService.save(quiz1).subscribe(() =>{
+        console.log(quiz1);
+        this.quizService.save(quiz1).subscribe(() => {
             this.quizForm.reset();
-            this.showNotification('top','center')
+            this.showNotification('top', 'center')
         }, error => {
             console.log(error)
         });
@@ -67,7 +93,6 @@ export class CreateQuizComponent implements OnInit {
     getAll() {
         this.quizService.getLevels().subscribe(levelList => {
             this.levels = levelList;
-            console.log(this.levels)
         });
         this.quizService.getTypeQuizzes().subscribe(typeQuizzesList => {
             this.typeQuizzes = typeQuizzesList;
@@ -79,29 +104,32 @@ export class CreateQuizComponent implements OnInit {
 
     change(quiz: any) {
         let id;
-        let arCategory = [];
         let arLevel;
-        let arTypeQuizzes;
+        let arCategory = [];
         let quiz1;
-        for (let i = 0; i < quiz.category.length; i++) {
-            id = quiz.category[i];
+        let correct_answer1: String = "";
+        let arTypeQuizzes;
+        let answer = quiz.answer1 + ";" + quiz.answer2 + ";" + quiz.answer3 + ";" + quiz.answer4;
+
+        for (let i = 0; i < this.categoriesChoice.length; i++) {
+            id = this.categoriesChoice[i].id;
             arCategory.push({id});
         }
-        for (let i = 0; i < quiz.typeQuizzes.length; i++) {
-            id = quiz.typeQuizzes[i];
-            arTypeQuizzes = {id};
-        }
-        for (let i = 0; i < quiz.level.length; i++) {
-            id = quiz.level[i];
-            arLevel = {id};
-        }
+        correct_answer1 += quiz.correct_answer.join(";");
+
+        id = quiz.level;
+        arLevel = {id};
+
+        id = quiz.typeQuiz;
+        arTypeQuizzes = {id};
+
         quiz1 = {
-            answer: quiz.answer,
-            correct_answer: quiz.correct_answer,
+            answer: answer,
+            correct_answer: correct_answer1,
             name: quiz.name,
             typeQuizzes: arTypeQuizzes,
             level: arLevel,
-            category: arCategory
+            categories: arCategory
         }
         return quiz1;
     }
@@ -111,14 +139,14 @@ export class CreateQuizComponent implements OnInit {
         this.categoriesChoice.push(value);
     }
 
-    showNotification(from, align){
+    showNotification(from, align) {
         // const type = ['','info','success','warning','danger'];
         //
         // var color = Math.floor((Math.random() * 4) + 1);
         $.notify({
             icon: "pe-7s-check",
             message: "Create new quiz successfully!"
-        },{
+        }, {
             type: 'success',
             timer: 1000,
             placement: {
