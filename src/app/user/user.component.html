@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        <h2 class="title">Profile</h2>
+                        <h1 class="title">Profile</h1>
                     </div>
                     <div class="content">
                         <form>
@@ -103,15 +103,22 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="header">
-                        <h2 class="title">Edit Password</h2>
+                        <h1 class="title">Edit Password</h1>
                     </div>
                     <div class="content">
-                        <form>
+                        <form [formGroup]="changePasswordForm" (ngSubmit)="submit()">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Current Password</label>
-                                        <input type="password" class="form-control" id="inputCur">
+                                        <input type="password" class="form-control" id="inputCur" formControlName="curPass">
+                                        <mat-error *ngIf="curPass.hasError('pattern')" style="color: orange">
+                                            Passwords must have at least 8 characters and contain of the following: lowercase letters, numbers.<br>
+                                        </mat-error>
+<!--                                        <mat-error *ngIf="curPass.hasError('matching')" style="color: orange">-->
+<!--                                            abc.-->
+<!--                                        </mat-error>-->
+
                                         <section class="example-section">
                                             <mat-checkbox class="example-margin" (click)="myFunction1()">
                                                 <small>Show Password</small>
@@ -125,7 +132,11 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>New Password</label>
-                                        <input type="password" class="form-control" id="inputNew">
+                                        <input type="password" class="form-control" id="inputNew" formControlName="newPass">
+                                        <mat-error *ngIf="newPass.hasError('pattern')" style="color: orange">
+                                            Passwords must have at least 8 characters and contain of the following: lowercase letters, numbers.<br>
+                                        </mat-error>
+
                                         <section class="example-section">
                                             <mat-checkbox class="example-margin" (click)="myFunction2()">
                                                 <small>Show Password</small>
@@ -138,8 +149,15 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Re Password</label>
-                                        <input type="password" class="form-control" id="inputRe">
+                                        <label>Confirm Password</label>
+                                        <input type="password" class="form-control" id="inputRe" formControlName="rePass">
+                                        <mat-error *ngIf="rePass.hasError('pattern')" style="color: orange">
+                                            Passwords must have at least 8 characters and contain of the following: lowercase letters, numbers.<br>
+                                        </mat-error>
+                                        <mat-error *ngIf="rePass.hasError('matching')" style="color: orange">
+                                            Confirm Password must match.
+                                        </mat-error>
+
                                         <section class="example-section">
                                             <mat-checkbox class="example-margin" (click)="myFunction3()">
                                                 <small>Show Password</small>
@@ -149,7 +167,7 @@
                                 </div>
                             </div>
                             <button style="margin-left: 10px" type="reset" class="btn btn-warning btn-fill pull-right">Cancel</button>
-                            <button type="submit" class="btn btn-warning btn-fill pull-right">Update</button>
+                            <button type="submit" [disabled]="!changePasswordForm.valid" class="btn btn-warning btn-fill pull-right">Update</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
