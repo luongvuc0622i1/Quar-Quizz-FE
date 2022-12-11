@@ -138,7 +138,11 @@ export class FormLoginComponent implements OnInit, AfterViewInit {
 
             this.statusLogin = 'Login Success!';
 
-            this.router.navigate(['/manager/dashboard']);
+            if (data.roleSet[0].name == 'MANAGER') {
+              this.router.navigate(['/manager/dashboard']);
+            } else if (data.roleSet[0].name == 'USER') {
+              this.router.navigate(['/user/dashboard']);
+            }
           }
           // @ts-ignore
           if (data.message === 'lock') {
