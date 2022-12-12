@@ -143,9 +143,9 @@ export class UpdateQuizComponent implements OnInit {
     // var color = Math.floor((Math.random() * 4) + 1);
     $.notify({
       icon: "pe-7s-check",
-      message: "Create new quiz successfully!"
+      message: "Update quiz successfully!"
     }, {
-      type: 'success',
+      type: 'warning',
       timer: 1000,
       placement: {
         from: from,
