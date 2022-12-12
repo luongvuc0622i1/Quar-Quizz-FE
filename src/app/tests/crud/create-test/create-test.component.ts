@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Level} from "../../../model/level";
 import {Quiz} from "../../../model/quiz";
 import {Category} from "../../../model/category";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-create-test',
@@ -70,7 +71,12 @@ export class CreateTestComponent implements OnInit {
     console.log(test1);
     this.testService.save(test1).subscribe(() =>{
       this.testForm.reset();
-      alert('Create done!');
+      console.log('Create done!');
+      Swal.fire(
+          'Done!',
+          ' ',
+          'success'
+      )
     }, error => {
       console.log(error)
     });
@@ -113,6 +119,9 @@ export class CreateTestComponent implements OnInit {
   choose(quiz: any) {
     if (this.quizzesChoice.length < this.limit) {
       this.quizzesChoice.push(quiz);
+      if (this.quizzesChoice.length == this.limit) {
+        this.booleanT = true;
+      }
     } else if (this.quizzesChoice.length = this.limit) {
       // this.quizzesChoice.push(quiz);
       this.booleanT = true;
