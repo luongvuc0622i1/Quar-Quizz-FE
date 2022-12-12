@@ -18,31 +18,31 @@ export class QuizService {
     }
 
     getAll(): Observable<Quiz[]> {
-        return this.http.get<Quiz[]>(API_URL + '/quizzes');
+        return this.http.get<Quiz[]>(API_URL + '/manager/quizzes');
     }
 
     findById(id: number) {
-        return this.http.get<Quiz>(`${API_URL}/quizzes/${id}`);
+        return this.http.get<Quiz>(`${API_URL}/manager/quizzes/${id}`);
     }
 
     save(quiz: Quiz): Observable<Quiz> {
-        return this.http.post<Quiz>(API_URL + `/quizzes`, quiz);
+        return this.http.post<Quiz>(API_URL + `/manager/quizzes`, quiz);
     }
 
     update(id: number, Quiz: Quiz): Observable<Quiz> {
-        return this.http.put<Quiz>(`${API_URL}/quizzes/${id}`, Quiz);
+        return this.http.put<Quiz>(`${API_URL}/manager/quizzes/${id}`, Quiz);
     }
 
     delete(id: number): Observable<Quiz> {
-        return this.http.delete<Quiz>(`${API_URL}/quizzes/${id}`);
+        return this.http.delete<Quiz>(`${API_URL}/manager/quizzes/${id}`);
     }
 
     getLevels(): Observable<Level[]> {
-        return this.http.get<Level[]>(API_URL + '/levels');
+        return this.http.get<Level[]>(API_URL + '/manager/levels');
     }
 
     getTypeQuizzes(): Observable<TypeQuizzes[]> {
-        return this.http.get<TypeQuizzes[]>(API_URL + '/quizzes/type');
+        return this.http.get<TypeQuizzes[]>(API_URL + '/manager/quizzes/type');
     }
 
     getCategories(): Observable<Category[]> {

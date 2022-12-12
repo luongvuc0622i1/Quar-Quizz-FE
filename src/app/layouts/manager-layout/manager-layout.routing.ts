@@ -25,7 +25,7 @@ export const ManagerLayoutRoutes: Routes = [
     { path: 'categories/:id',     component: DeleteComponent},
     { path: 'quiz/list',      component: ListQuizComponent },
     { path: 'quiz/create',    component: CreateQuizComponent },
-    { path: 'quiz/update',    component: UpdateQuizComponent },
+    { path: 'quiz/update/:id',    component: UpdateQuizComponent },
     { path: 'test/list',      component: ListTestComponent },
     { path: 'test/create',    component: CreateTestComponent },
     { path: 'test/detail/:id',component: DetailTestComponent },
