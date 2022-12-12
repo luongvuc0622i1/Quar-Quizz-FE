@@ -111,10 +111,10 @@ export class CreateTestComponent implements OnInit {
   }
 
   choose(quiz: any) {
-    if (this.quizzesChoice.length < this.limit-1) {
+    if (this.quizzesChoice.length < this.limit) {
       this.quizzesChoice.push(quiz);
-    } else if (this.quizzesChoice.length = this.limit-1) {
-      this.quizzesChoice.push(quiz);
+    } else if (this.quizzesChoice.length = this.limit) {
+      // this.quizzesChoice.push(quiz);
       this.booleanT = true;
     }
     // if (this.quizzesChoice.length = this.limit) {
