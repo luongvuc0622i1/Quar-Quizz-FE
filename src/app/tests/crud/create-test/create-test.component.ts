@@ -117,6 +117,13 @@ export class CreateTestComponent implements OnInit {
   }
 
   choose(quiz: any) {
+    for (let i=0; i < this.quizzesChoice.length; i++) {
+      console.log(this.quizzesChoice[i].id);
+      if (this.quizzesChoice[i].id == quiz.id) {
+        alert("Duplicate!");
+      }
+    }
+
     if (this.quizzesChoice.length < this.limit) {
       this.quizzesChoice.push(quiz);
       if (this.quizzesChoice.length == this.limit) {
