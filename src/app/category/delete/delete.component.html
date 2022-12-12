@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Delete Profile</h4>
+                        <h1 class="title">Delete Category</h1>
                     </div>
                     <div class="content">
                         <form [formGroup]="categoryFrom" (ngSubmit)="deleteCategory(id)">
@@ -20,7 +20,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>name</label>
-                                        <td><input type="text" class="form-control here" placeholder="name category" formControlName="name" ></td>
+                                        <td><input type="text" class="form-control here" placeholder="name category" value="{{categories[0].name}}" formControlName="name" readonly></td>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                             <!--                                    </div>-->
                             <!--                                </div>-->
                             <!--                            </div>-->
-                            <button type="submit" class="btn btn-warning btn-fill pull-right">Delete</button>
+                            <button type="submit" class="btn btn-warning btn-fill pull-right" style="margin-left: 10px">Delete</button>
                             <button [routerLink]="['/manager/category']" type="submit" class="btn btn-warning btn-fill pull-right">BackList</button>
                             <div class="clearfix"></div>
                         </form>

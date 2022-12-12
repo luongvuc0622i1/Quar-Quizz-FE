@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Edit Profile</h4>
+                        <h1 class="title">Create Category</h1>
                     </div>
                     <div class="content">
                         <form [formGroup]="categoryForm" (ngSubmit)="submit()">
@@ -86,8 +86,8 @@
 <!--                                    </div>-->
 <!--                                </div>-->
 <!--                            </div>-->
-                            <button type="submit" class="btn btn-warning btn-fill pull-right" [disabled]="!categoryForm.valid">create</button>
-                            <button [routerLink]="['/manager/category']" type="submit" class="btn btn-warning btn-fill pull-right">BackList</button>
+                            <button type="submit" class="btn btn-warning btn-fill pull-right" [disabled]="!categoryForm.valid" style="margin-left: 10px">Create</button>
+                            <button [routerLink]="['/manager/category']" type="submit" class="btn btn-warning btn-fill pull-right" >BackList</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
