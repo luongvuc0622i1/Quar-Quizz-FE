@@ -18,11 +18,11 @@ export class TestService {
   }
 
   getAll(): Observable<Test[]> {
-    return this.http.get<Test[]>(API_URL + '/manager/tests');
+    return this.http.get<Test[]>(API_URL + '/user/tests');
   }
 
   findById(id: number): Observable<Test> {
-    return this.http.get<Test>(`${API_URL}/manager/tests/${id}`);
+    return this.http.get<Test>(`${API_URL}/user/tests/${id}`);
   }
 
   save(test: Test): Observable<Test> {
