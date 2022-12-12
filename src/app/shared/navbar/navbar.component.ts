@@ -70,7 +70,7 @@ export class NavbarComponent implements OnInit{
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                    'Deleted!',
+                    'Log Out',
                     'Go to Home Page!',
                     'success'
                 )

@@ -30,11 +30,11 @@ export class TestService {
   }
 
   getLevels(): Observable<Level[]> {
-    return this.http.get<Level[]>(API_URL + '/levels');
+    return this.http.get<Level[]>(API_URL + '/manager/levels');
   }
 
   getQuizzes(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(API_URL + '/quizzes');
+    return this.http.get<Quiz[]>(API_URL + '/manager/quizzes');
   }
 
   getCategories(): Observable<Category[]> {

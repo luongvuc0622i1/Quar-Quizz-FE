@@ -101,7 +101,7 @@
                                 </button>
                                 <mat-error *ngIf="password.hasError('required')">Password is required!</mat-error>
                                 <mat-error *ngIf="password.hasError('minlength')">Password must have at least 8 characters</mat-error>
-                                <mat-error *ngIf="password.hasError('pattern')">First letter should be capitalized</mat-error>
+                                <mat-error *ngIf="password.hasError('pattern')">Incorrect password format</mat-error>
                             </mat-form-field>
                         </div>
 
