@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Category} from "../inteface/category";
 import {data} from "jquery";
 import {HttpResponseBase} from "@angular/common/http";
+import Swal from "sweetalert2";
 declare let swal : any;
 @Component({
   selector: 'app-delete',
@@ -28,12 +29,20 @@ export class DeleteComponent implements OnInit {
 
   ngOnInit(): void {
        this.getAll();
+       this.getCategoryById(this.id);
   }
 getAll(){
    this.categoryService.getAll().subscribe(category =>{
        this.categories=category;
    }) ;
 }
+
+    getCategoryById(id: number) {
+        this.categoryService.findById(id).subscribe(category =>{
+            this.category = category;
+        })
+    }
+
   getCategory(id:number){
         return this.categoryService.findById(id).subscribe(category =>{
             this.categoryFrom=new FormGroup({
@@ -44,47 +53,39 @@ getAll(){
   }
   h:string;
   deleteCategory(id : number) {
-          if (confirm('you want to delete ?')) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Delete now!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              Swal.fire(
+                  'Done!',
+                  ' ',
+                  'success'
+              )
               this.categoryService.delete(id).subscribe(category => {
                   // this.router.navigate(['/category']);
                   console.log(category)
-                  alert("OK 😄");
+                  console.log("OK 😄");
+
                   this.getAll();
               }, e => {
-                  // console.log(e)
-                  console.error(e + "👿");
-                  if(e.status==404){
-                      alert("error 👿");
-                  }else {
-                      alert("error 👿");
-                  }
+                  console.log(e)
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Action wrong!',
+                      footer: ' '
+                  })
               });
-              // swal({
-              //     title: "Delete Category",
-              //     text : `category : ${this.category.name}`,
-              //     icon : "😄",
-              // }).then((DeleteCategory)=>{
-              //     if(DeleteCategory) {
-              //         swal("Delete success", this.even.success)
-              //     this.categoryService.delete(id).subscribe(next=>{
-              //         this.categories;
-              //     })}
-              //     else {
-              //         swal({
-              //             icon : "👿",
-              //         }).then((Delete)=>{
-              //             if (Delete){
-              //                 swal("Delete failure",this.even.error)
-              //             }
-              //         })
-              //     }
-              // })
-          }else {
-              // if(this.e.status ==404){
-              //     alert("error 👿");
-              // }
-              alert("error 👿");
+              ;
           }
+      })
   }
       // even : IDBRequestEventMap
     e: HttpResponseBase;
