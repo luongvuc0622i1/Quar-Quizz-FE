@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../service/user/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {matchValidator} from "../service/form-validators";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-user',
@@ -35,19 +36,42 @@ export class UserComponent implements OnInit {
   }
 
   submit(){
-    const test= this.changePasswordForm.value;
-    console.log(test);
-    const test1 = {
-      "oldPassword": test.curPass,
-      "newPassword": test.newPass
-    };
-    console.log(test1);
-    this.userService.update(test1).subscribe(() =>{
-      this.changePasswordForm.reset();
-      alert('Update done!');
-    }, error => {
-      alert('Current Password is fault!');
-    });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Change now!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+            'Done!',
+            ' ',
+            'success'
+        )
+        const test= this.changePasswordForm.value;
+        console.log(test);
+        const test1 = {
+          "oldPassword": test.curPass,
+          "newPassword": test.newPass
+        };
+        console.log(test1);
+        this.userService.update(test1).subscribe(() =>{
+          this.changePasswordForm.reset();
+          console.log('Update done!');
+        }, error => {
+          console.log('Current Password is fault!');
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Current password wrong!',
+            footer: ' '
+          })
+        });
+      }
+    })
   }
 
   getAll() {
