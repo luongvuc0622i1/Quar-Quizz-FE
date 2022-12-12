@@ -65,11 +65,24 @@ export class ListQuizComponent implements OnInit {
         }).then((result) => {
             if (result.isConfirmed) {
                 this.quizService.delete(id).subscribe(() => {
-                    this.router.navigate(['/manager/quiz/list']).then(() => {
+                    this.router.navigate(['/manager/quiz/list']);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Quiz deleted!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).
+                    then(() => {
                         location.reload()
                     })
                 }, e => {
                     console.log(e);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Cannot delete quiz!',
+                        footer: 'If the quiz is already on a test, it can not be deleted.'
+                    })
                 });
             }
         })
