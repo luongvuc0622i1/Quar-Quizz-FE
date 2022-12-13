@@ -33,6 +33,11 @@ export class ListQuizComponent implements OnInit {
                 });
             });
         });
+        $(document).ready(function () {
+            // @ts-ignore
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
     };
 
 
