@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Test} from "../model/test";
-import {TestService} from "../service/test/test.service";
+import {Test} from "../../model/test";
+import {TestService} from "../../service/test/test.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
-  selector: 'app-exam',
-  templateUrl: './exam.component.html',
-  styleUrls: ['./exam.component.scss']
+  selector: 'app-exam-detail',
+  templateUrl: './exam-detail.component.html',
+  styleUrls: ['./exam-detail.component.scss']
 })
-export class ExamComponent implements OnInit {
+export class ExamDetailComponent implements OnInit {
   test: Test;
-  id: number = 1;
+  id: number;
   panelOpenState = false;
   answers: [];
 
@@ -19,9 +19,9 @@ export class ExamComponent implements OnInit {
 
   constructor(private testService: TestService,
               private activatedRoute: ActivatedRoute) {
-    // this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-    //   this.id = +paramMap.get('id');
-    // });
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+    });
   }
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class ExamComponent implements OnInit {
     // for (let i=0; i < this.test.quizzes.length; i++) {
     //   this.answers = this.test.quizzes;
     console.log(this.test);
-      console.log(this.answers);
+    console.log(this.answers);
     // }
   }
 

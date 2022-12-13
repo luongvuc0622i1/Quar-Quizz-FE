@@ -7,12 +7,14 @@ import {IconsComponent} from "../../icons/icons.component";
 import {MapsComponent} from "../../maps/maps.component";
 import {NotificationsComponent} from "../../notifications/notifications.component";
 import {UserComponent} from "../../user/user.component";
-import {ExamComponent} from "../../exam/exam.component";
+import {ExamListComponent} from "../../exam/exam-list/exam-list.component";
+import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component";
 
 export const UserLayoutRoutes: Routes = [
   { path: 'dashboard',      component: HomeComponent },
   { path: 'user',           component: UserComponent },
-  { path: 'test',           component: ExamComponent },
+  { path: 'exam/list',      component: ExamListComponent },
+  { path: 'exam/detail/:id',component: ExamDetailComponent },
   { path: 'table',          component: TablesComponent },
   { path: 'typography',     component: TypographyComponent },
   { path: 'icons',          component: IconsComponent },

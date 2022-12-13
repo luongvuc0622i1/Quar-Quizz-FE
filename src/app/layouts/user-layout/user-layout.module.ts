@@ -11,7 +11,8 @@ import {UserLayoutRoutes} from './user-layout.routing';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatTableModule} from "@angular/material/table";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {ExamComponent} from "../../exam/exam.component";
+import {ExamListComponent} from "../../exam/exam-list/exam-list.component";
+import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component";
 
 
 @NgModule({
@@ -27,8 +28,8 @@ import {ExamComponent} from "../../exam/exam.component";
         MatExpansionModule
     ],
     declarations: [
-        // HomeComponent,
-        ExamComponent
+        ExamListComponent,
+        ExamDetailComponent
     ]
 })
 
