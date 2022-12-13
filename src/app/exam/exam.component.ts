@@ -14,6 +14,9 @@ export class ExamComponent implements OnInit {
   panelOpenState = false;
   answers: [];
 
+  //step
+  currentTab = 0; // Current tab is set to be the first tab (0)
+
   constructor(private testService: TestService,
               private activatedRoute: ActivatedRoute) {
     // this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -68,18 +71,19 @@ export class ExamComponent implements OnInit {
       e.preventDefault();
     });
 
-    this.showTab(this.currentTab);
+    this.showTab(0);
   }
 
 
   //step
-  currentTab = 0; // Current tab is set to be the first tab (0)
 
   showTab(n) {
     // This function will display the specified tab of the form ...
     var x = document.getElementsByClassName("tab");
     // @ts-ignore
     x[n].style.display = "block";
+    // @ts-ignore
+    console.log(x[n]);
     // ... and fix the Previous/Next buttons:
     if (n == 0) {
       document.getElementById("prevBtn").style.display = "none";
@@ -103,11 +107,11 @@ export class ExamComponent implements OnInit {
     // Hide the current tab:
 
     // @ts-ignore
-    console.log(x[this.currentTab].style.display)
+    console.log(x[this.currentTab])
     // @ts-ignore
     x[this.currentTab].style.display = "none";
     // @ts-ignore
-    console.log(x[this.currentTab].style.display)
+    console.log(x[this.currentTab])
     // Increase or decrease the current tab by 1:
     this.currentTab = this.currentTab + n;
     // if you have reached the end of the form... :
