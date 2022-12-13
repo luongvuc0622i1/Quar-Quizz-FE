@@ -1,1 +1,24 @@
-<p>exam-list works!</p>
+<div class="bgr">
+    <div class="container">
+        <form id="regForm" action="">
+            <div class="row">
+                <div class="col-md-2" *ngFor="let test of tests; index as i">
+
+            <div class="modal-dialog widget-wrap tab" [routerLink]="['/user/exam/detail/',test.id]">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><span class="label label-warning" id="qid">{{i+1}}</span> {{test.name}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Level: {{test.level.name}}</p>
+                        <p>Number of quizzes: {{test.quizzes.length}}</p>
+                        <p>Max time: {{test.maxTime}}</p>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

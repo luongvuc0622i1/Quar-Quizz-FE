@@ -11,8 +11,6 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 export class ExamDetailComponent implements OnInit {
   test: Test;
   id: number;
-  panelOpenState = false;
-  answers: [];
 
   //step
   currentTab = 0; // Current tab is set to be the first tab (0)
@@ -27,53 +25,12 @@ export class ExamDetailComponent implements OnInit {
   ngOnInit(): void {
     this.testService.findById(this.id).subscribe(test => {
       this.test = test;
-      this.answers = test.quizzes[1].answer.split(";");
     });
-  }
-
-  splitAnswer(){
-    // for (let i=0; i < this.test.quizzes.length; i++) {
-    //   this.answers = this.test.quizzes;
-    console.log(this.test);
-    console.log(this.answers);
-    // }
   }
 
   ngAfterViewInit() {
-    var $firstButton = $(".first"),
-        $secondButton = $(".second"),
-        $input = $("input"),
-        $name = $(".name"),
-        $more = $(".more"),
-        $yourname = $(".yourname"),
-        $reset = $(".reset"),
-        $ctr = $(".container");
-
-    $firstButton.on("click", function (e) {
-      $(this).text("Saving...").delay(900).queue(function () {
-        $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
-      });
-      e.preventDefault();
-    });
-
-    $secondButton.on("click", function (e) {
-      $(this).text("Saving...").delay(900).queue(function () {
-        $ctr.addClass("full slider-three-active").removeClass("center slider-two-active slider-one-active");
-        // @ts-ignore
-        $name = $name.val();
-        // @ts-ignore
-        if ($name == "") {
-          $yourname.html("Anonymous!");
-        } else {
-          $yourname.html($name + "!");
-        }
-      });
-      e.preventDefault();
-    });
-
     this.showTab(0);
   }
-
 
   //step
 
@@ -82,8 +39,6 @@ export class ExamDetailComponent implements OnInit {
     var x = document.getElementsByClassName("tab");
     // @ts-ignore
     x[n].style.display = "block";
-    // @ts-ignore
-    console.log(x[n]);
     // ... and fix the Previous/Next buttons:
     if (n == 0) {
       document.getElementById("prevBtn").style.display = "none";
@@ -107,11 +62,7 @@ export class ExamDetailComponent implements OnInit {
     // Hide the current tab:
 
     // @ts-ignore
-    console.log(x[this.currentTab])
-    // @ts-ignore
     x[this.currentTab].style.display = "none";
-    // @ts-ignore
-    console.log(x[this.currentTab])
     // Increase or decrease the current tab by 1:
     this.currentTab = this.currentTab + n;
     // if you have reached the end of the form... :
