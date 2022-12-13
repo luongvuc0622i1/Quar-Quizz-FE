@@ -21,7 +21,12 @@ const routes: Routes = [
             }]
     }, {
         path: 'user',
-        component: UserLayoutComponent
+        component: UserLayoutComponent,
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./layouts/user-layout/user-layout.module').then(x => x.UserLayoutModule)
+            }]
     },
     {
         path: 'account',
