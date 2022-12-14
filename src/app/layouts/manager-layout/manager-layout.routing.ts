@@ -17,6 +17,7 @@ import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.compo
 import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.component";
 import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.component";
 
+
 export const ManagerLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user',           component: UserComponent },

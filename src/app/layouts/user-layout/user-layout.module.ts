@@ -13,8 +13,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {ExamListComponent} from "../../exam/exam-list/exam-list.component";
 import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component";
-
-
+import {HistoryListComponent} from "../../history/history-list/history-list.component";
+import {HistoryDetailComponent} from "../../history/history-detail/history-detail.component";
+import {ExamQuizDetailComponent} from "../../examQuiz/exam-quiz-detail/exam-quiz-detail.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -29,7 +30,11 @@ import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component"
     ],
     declarations: [
         ExamListComponent,
-        ExamDetailComponent
+        ExamDetailComponent,
+        HistoryDetailComponent,
+        HistoryListComponent,
+        ExamQuizDetailComponent
+
     ]
 })
 

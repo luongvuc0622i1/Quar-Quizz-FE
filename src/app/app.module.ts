@@ -23,7 +23,6 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { HomePageComponent } from './home-page/home-page.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -44,7 +43,7 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
         ManagerLayoutComponent,
         FormLoginComponent,
         HomePageComponent,
-        UserLayoutComponent
+        UserLayoutComponent,
     ],
     providers: [
         {

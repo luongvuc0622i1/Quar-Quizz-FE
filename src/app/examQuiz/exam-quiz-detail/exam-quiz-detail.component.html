@@ -1,0 +1,47 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header" style="float: left">
+                        <h1 class="title">QUIZ DETAIL</h1>
+                        <p class="category">This is table of quiz detail</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+
+                            <tbody>
+                            <div *ngFor="let exam of examQuizDetail; index as i">
+                                <hr>
+                                <td><tr style="color: #df50ff">QUIZ CODE :</tr> {{i + 1}}</td>
+                                <hr>
+                                <td><tr style="color: coral">NAME TEST</tr>{{exam.test.name}}</td>
+                                <hr>
+                                <td><tr style="color: coral">TEST TIME</tr>{{exam.test.maxTime}}</td>
+                                <hr>
+                                <td><tr style="color: coral">TEST LEVEL</tr>{{exam.test.level.name}}</td>
+                                <hr>
+                                <div *ngFor="let categories of exam.test.categories; index as i">
+                                    <tr style="color: coral">CATEGORY :</tr><td>{{exam.test.categories[i].name}}</td>
+                                </div>
+                                <hr>
+<!--                                <td><tr style="color: coral">QUIZ NAME</tr>{{exam.quiz.name}}</td>-->
+<!--                                <hr>-->
+                                <td><tr style="color: coral">QUIZ LEVEL</tr>{{exam.quiz.level.name}}</td>
+                                <hr>
+                                <div *ngFor="let quiz of exam.test.quizzes; index as i">
+                                <tr style="color: coral">QUIZZES </tr><td>{{exam.test.quizzes[i].name}}</td>
+                                </div>
+                                <hr>
+                                <td><tr style="color: coral">TEST OF ANSWETUSE</tr>{{exam.answerUser}}</td>
+                                <hr>
+                                <td><tr style="color: coral">TEST PASSSCORE</tr>{{exam.test.passScore}}</td>
+                            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
