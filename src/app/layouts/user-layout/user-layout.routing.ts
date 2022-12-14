@@ -9,8 +9,8 @@ import {NotificationsComponent} from "../../notifications/notifications.componen
 import {UserComponent} from "../../user/user.component";
 import {ExamListComponent} from "../../exam/exam-list/exam-list.component";
 import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component";
-import {HistoryDetailComponent} from "../../history/history-detail/history-detail.component";
 import {HistoryListComponent} from "../../history/history-list/history-list.component";
+import {HistoryDetailComponent} from "../../history/history-detail/history-detail.component";
 import {ExamQuizDetailComponent} from "../../examQuiz/exam-quiz-detail/exam-quiz-detail.component";
 
 export const UserLayoutRoutes: Routes = [
@@ -23,7 +23,7 @@ export const UserLayoutRoutes: Routes = [
   { path: 'icons',          component: IconsComponent },
   { path: 'maps',           component: MapsComponent },
   { path: 'notifications',  component: NotificationsComponent },
-  { path: 'histories',        component: HistoryListComponent },
+  { path: 'histories',        component: HistoryListComponent},
   { path: 'histories/:id',    component: HistoryDetailComponent },
     {path:'examQuizDetail', component:ExamQuizDetailComponent}
 
