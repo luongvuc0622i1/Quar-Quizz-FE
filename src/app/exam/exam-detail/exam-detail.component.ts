@@ -3,8 +3,8 @@ import {Test} from "../../model/test";
 import {TestService} from "../../service/test/test.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {ExamService} from "../../service/exam/exam.service";
+import {ExamTest} from "../../model/exam-test";
 import {ExamQuiz} from "../../model/exam-quiz";
-import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-exam-detail',
@@ -19,6 +19,8 @@ export class ExamDetailComponent implements OnInit {
   id_user: number;
   id_quiz: number;
   examQuiz: ExamQuiz;
+  examQuizArId: number[] = [];
+  examTest: ExamTest;
 
   //step
   currentTab = 0; // Current tab is set to be the first tab (0)
@@ -110,6 +112,10 @@ export class ExamDetailComponent implements OnInit {
   //   x[n].className += " active";
   // }
 
+  getQuizId(id: number) {
+    this.id_quiz = id;
+  }
+
   click(value: number) {
     this.answerUserAr = [];
     this.answerUserAr.push(value);
@@ -118,7 +124,7 @@ export class ExamDetailComponent implements OnInit {
     this.examQuiz = {
       "quiz":
           {
-            "id":3
+            "id":this.id_quiz
           },
       "test":
           {
@@ -131,11 +137,33 @@ export class ExamDetailComponent implements OnInit {
   }
 
   send() {
-    this.examService.save(this.examQuiz).subscribe(() =>{
+    this.examService.saveQuiz(this.examQuiz).subscribe(examQuizDB => {
+      this.examQuizArId.push(examQuizDB.id);
+      console.log(this.examQuizArId); //==[27,28,29]
+    }, error => {
+      console.log(error)
+    });
+  }
+
+  done() {
+    let examQuizzes = [];
+        this.id_user = Number(localStorage.getItem('ID_KEY'));
+    for (let i=0; i< this.examQuizArId.length; i++) {
+      examQuizzes.push({"id": this.examQuizArId[i]});
+    }
+    console.log(examQuizzes);
+    this.examTest = {
+      "examQuizzes": examQuizzes,
+      // @ts-ignore
+      appUser: {"id":this.id_user}
+    }
+    console.log(this.examTest);
+    this.examService.saveTest(this.examTest).subscribe(() =>{
       // this.testForm.reset();
       console.log('Create done!');
     }, error => {
       console.log(error)
     });
+    this.examQuizArId = [];
   }
 }

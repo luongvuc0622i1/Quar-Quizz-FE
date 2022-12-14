@@ -8,7 +8,7 @@
                 <mat-icon id="prevBtn" (click)="nextPrev(-1)">arrow_back_ios_rounded</mat-icon>
             </div>
             <div class="col-md-8" style="height: 550px">
-        <form id="regForm" *ngFor="let quiz of test.quizzes; index as i">
+        <form id="regForm" *ngFor="let quiz of test.quizzes; index as i" (click)="getQuizId(quiz.id)">
             <div class="modal-dialog widget-wrap tab">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="row">
-            //
+            <button (click)="done()">nop bai</button>
         </div>
     </div>
 </div>
