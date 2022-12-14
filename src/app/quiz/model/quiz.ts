@@ -1,5 +1,5 @@
 import {Level} from "./level";
-import {Category} from "./category";
+import {Categories} from "./categories";
 import {TypeQuizzes} from "./typequizzes";
 
 
@@ -10,5 +10,5 @@ export interface Quiz {
     name?:string;
     typeQuizzes?:TypeQuizzes;
     level?: Level;
-    category?: Category[]
+    categories?: Categories[]
 }
