@@ -13,6 +13,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {ExamListComponent} from "../../exam/exam-list/exam-list.component";
 import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component"
         ReactiveFormsModule,
         MatCheckboxModule,
         MatTableModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatIconModule
     ],
     declarations: [
         ExamListComponent,

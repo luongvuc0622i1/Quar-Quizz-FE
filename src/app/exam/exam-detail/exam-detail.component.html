@@ -1,6 +1,14 @@
 <div class="bgr">
     <div class="container">
-        <form id="regForm" action="">
+        <div class="row">
+            <p>{{test.name}}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-2" style="height: 550px">
+                <mat-icon id="prevBtn" (click)="nextPrev(-1)">arrow_back_ios_rounded</mat-icon>
+            </div>
+            <div class="col-md-8" style="height: 550px">
+        <form id="regForm" [formGroup]="testForm" (ngSubmit)="send()">
             <div class="modal-dialog widget-wrap tab" *ngFor="let quiz of test.quizzes; index as i">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -8,7 +16,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="quiz" id="quiz">
-                            <label class="element-animation1 btn-lg btn-warning btn-block option"><input class="largerCheck" type="checkbox" name="q_answer" value="1">  {{quiz.answer.split(";")[0]}}</label>
+                            <label class="element-animation1 btn-lg btn-warning btn-block option"><input class="largerCheck" type="checkbox" name="q_answer" value="1" formControlName="q1">  {{quiz.answer.split(";")[0]}}</label>
                             <label class="element-animation2 btn-lg btn-warning btn-block option"><input class="largerCheck" type="checkbox" name="q_answer" value="2">  {{quiz.answer.split(";")[1]}}</label>
                             <label class="element-animation3 btn-lg btn-warning btn-block option"><input class="largerCheck" type="checkbox" name="q_answer" value="3">  {{quiz.answer.split(";")[2]}}</label>
                             <label class="element-animation3 btn-lg btn-warning btn-block option"><input class="largerCheck" type="checkbox" name="q_answer" value="4">  {{quiz.answer.split(";")[3]}}</label>
@@ -16,8 +24,17 @@
                     </div>
                 </div>
             </div>
-            <button type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
+
+            <button type="submit">abc</button>
         </form>
+            </div>
+            <div class="col-md-2" style="height: 550px">
+<!--                <mat-icon (click)="nextPrev(1)">arrow_forward_ios_rounded</mat-icon>-->
+                <mat-icon id="nextBtn" (click)="nextPrev(1)">arrow_forward_ios_rounded</mat-icon>
+            </div>
+        </div>
+        <div class="row">
+<!--            <button type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>-->
+        </div>
     </div>
 </div>

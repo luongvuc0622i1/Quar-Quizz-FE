@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Test} from "../../model/test";
 import {TestService} from "../../service/test/test.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-exam-detail',
@@ -46,12 +47,12 @@ export class ExamDetailComponent implements OnInit {
       document.getElementById("prevBtn").style.display = "inline";
     }
     if (n == (x.length - 1)) {
-      document.getElementById("nextBtn").innerHTML = "Submit";
+      document.getElementById("nextBtn").style.display = "none";
     } else {
-      document.getElementById("nextBtn").innerHTML = "Next";
+      document.getElementById("nextBtn").style.display = "inline";
     }
     // ... and run a function that displays the correct step indicator:
-    this.fixStepIndicator(n)
+    // this.fixStepIndicator(n)
   }
 
   nextPrev(n) {
@@ -65,13 +66,6 @@ export class ExamDetailComponent implements OnInit {
     x[this.currentTab].style.display = "none";
     // Increase or decrease the current tab by 1:
     this.currentTab = this.currentTab + n;
-    // if you have reached the end of the form... :
-    if (this.currentTab >= x.length) {
-      //...the form gets submitted:
-      // @ts-ignore
-      document.getElementById("regForm").submit();
-      return false;
-    }
     // Otherwise, display the correct tab:
     this.showTab(this.currentTab);
   }
@@ -98,13 +92,22 @@ export class ExamDetailComponent implements OnInit {
     return valid; // return the valid status
   }
 
-  fixStepIndicator(n) {
-    // This function removes the "active" class of all steps...
-    var i, x = document.getElementsByClassName("step");
-    for (i = 0; i < x.length; i++) {
-      x[i].className = x[i].className.replace(" active", "");
-    }
-    //... and adds the "active" class to the current step:
-    x[n].className += " active";
+  // fixStepIndicator(n) {
+  //   // This function removes the "active" class of all steps...
+  //   var i, x = document.getElementsByClassName("step");
+  //   for (i = 0; i < x.length; i++) {
+  //     x[i].className = x[i].className.replace(" active", "");
+  //   }
+  //   //... and adds the "active" class to the current step:
+  //   x[n].className += " active";
+  // }
+
+  testForm: FormGroup = new FormGroup({
+    q1: new FormControl(),
+  })
+
+  send() {
+    console.log("abc");
+    alert("abc");
   }
 }
