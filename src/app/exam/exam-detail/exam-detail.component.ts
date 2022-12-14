@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Test} from "../../model/test";
 import {TestService} from "../../service/test/test.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ExamService} from "../../service/exam/exam.service";
+import {ExamQuiz} from "../../model/exam-quiz";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-exam-detail',
@@ -11,12 +13,18 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class ExamDetailComponent implements OnInit {
   test: Test;
-  id: number;
+  answerUserAr: number[] = [];
+  answerUser: String;
+  id: number; //id_test
+  id_user: number;
+  id_quiz: number;
+  examQuiz: ExamQuiz;
 
   //step
   currentTab = 0; // Current tab is set to be the first tab (0)
 
   constructor(private testService: TestService,
+              private examService: ExamService,
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
@@ -102,12 +110,32 @@ export class ExamDetailComponent implements OnInit {
   //   x[n].className += " active";
   // }
 
-  testForm: FormGroup = new FormGroup({
-    q1: new FormControl(),
-  })
+  click(value: number) {
+    this.answerUserAr = [];
+    this.answerUserAr.push(value);
+    this.answerUser = this.answerUserAr.join(';');
+    this.id_user = Number(localStorage.getItem('ID_KEY'));
+    this.examQuiz = {
+      "quiz":
+          {
+            "id":3
+          },
+      "test":
+          {
+            "id":this.id
+          },
+      "answerUser":this.answerUser,
+      // @ts-ignore
+      appUser: {"id":this.id_user}
+    }
+  }
 
   send() {
-    console.log("abc");
-    alert("abc");
+    this.examService.save(this.examQuiz).subscribe(() =>{
+      // this.testForm.reset();
+      console.log('Create done!');
+    }, error => {
+      console.log(error)
+    });
   }
 }
