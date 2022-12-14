@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Quiz} from "../../model/quiz";
 import {QuizService} from "../../service/quiz.service";
 import {Level} from "../../../quiz/model/level";
-import {Category} from "../../../quiz/model/category";
+import {Categories} from "../../model/categories";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TypeQuizzes} from "../../model/typequizzes";
 
@@ -16,8 +16,8 @@ declare var $: any;
 export class CreateQuizComponent implements OnInit {
     levels: Level[] = [];
     typeQuizzes: TypeQuizzes[] = [];
-    categories: Category[] = [];
-    categoriesChoice: Category[] = [];
+    categories: Categories[] = [];
+
 
     option1: any;
     option2: any;
@@ -76,6 +76,10 @@ export class CreateQuizComponent implements OnInit {
         return this.quizForm.get('typeQuiz')
     }
 
+    get category() {
+        return this.quizForm.get('category')
+    }
+
 
     submit() {
         const quiz = this.quizForm.value;
@@ -111,8 +115,8 @@ export class CreateQuizComponent implements OnInit {
         let arTypeQuizzes;
         let answer = quiz.answer1 + ";" + quiz.answer2 + ";" + quiz.answer3 + ";" + quiz.answer4;
 
-        for (let i = 0; i < this.categoriesChoice.length; i++) {
-            id = this.categoriesChoice[i].id;
+        for (let i = 0; i < quiz.category.length; i++) {
+            id = quiz.category[i];
             arCategory.push({id});
         }
         correct_answer1 += quiz.correct_answer.join(";");
@@ -134,10 +138,6 @@ export class CreateQuizComponent implements OnInit {
         return quiz1;
     }
 
-    choiceCategory(value: any) {
-        console.log(value);
-        this.categoriesChoice.push(value);
-    }
 
     showNotification(from, align) {
         // const type = ['','info','success','warning','danger'];

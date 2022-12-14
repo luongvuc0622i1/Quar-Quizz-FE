@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Level} from "../model/level";
 import {Quiz} from "../model/quiz";
-import {Category} from "../model/category";
+import {Categories} from "../model/categories";
 import {TypeQuizzes} from "../model/typequizzes";
 
 // const API_URL=`${environment.apiUrl}`
@@ -45,8 +45,8 @@ export class QuizService {
         return this.http.get<TypeQuizzes[]>(API_URL + '/manager/quizzes/type');
     }
 
-    getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>(API_URL + '/manager/categories');
+    getCategories(): Observable<Categories[]> {
+        return this.http.get<Categories[]>(API_URL + '/manager/categories');
     }
 
     change(quiz: any) {

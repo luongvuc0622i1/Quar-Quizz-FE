@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
           var color = Math.floor((Math.random() * 4) + 1);
           $.notify({
               icon: "pe-7s-gift",
-              message: "Congratulations <b>Create success Category</b>."
+              message: "Congratulations <b>Create success Categories</b>."
           },{
               type: type[color],
               timer: 1000,

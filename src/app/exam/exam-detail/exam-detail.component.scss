@@ -10,7 +10,7 @@
 
 button {
   position: relative;
-  top: 380px;
+  top: 0px;
   left: 400px;
   background: #282A3A;
   color: #FFF;
@@ -275,4 +275,18 @@ label.btn-label {
 
 .tab {
   display: none;
+}
+
+.material-icons {
+  font-size: 50px;
+}
+
+.mat-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 48px;
+  width: 48px;
+  display: none;
+  color: rgba(255,255,255,.4);
 }

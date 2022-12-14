@@ -16,6 +16,7 @@ import {ExamDetailComponent} from "../../exam/exam-detail/exam-detail.component"
 import {HistoryListComponent} from "../../history/history-list/history-list.component";
 import {HistoryDetailComponent} from "../../history/history-detail/history-detail.component";
 import {ExamQuizDetailComponent} from "../../examQuiz/exam-quiz-detail/exam-quiz-detail.component";
+import {MatIconModule} from "@angular/material/icon";
 @NgModule({
     imports: [
         CommonModule,
@@ -26,7 +27,8 @@ import {ExamQuizDetailComponent} from "../../examQuiz/exam-quiz-detail/exam-quiz
         ReactiveFormsModule,
         MatCheckboxModule,
         MatTableModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatIconModule
     ],
     declarations: [
         ExamListComponent,
