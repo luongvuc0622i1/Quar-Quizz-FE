@@ -10,6 +10,7 @@ import {ExamQuiz} from "../interface/exam-quiz";
 export class ExamQuizDetailComponent implements OnInit {
 
     examQuizDetail:ExamQuiz[];
+    examQuizDetail1 :ExamQuiz;
     constructor(private examQuizDetailService : ExamQuizService) { }
 
     ngOnInit() {

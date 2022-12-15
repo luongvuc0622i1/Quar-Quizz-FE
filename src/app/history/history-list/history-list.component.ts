@@ -10,6 +10,7 @@ import {ExamTestDetailService} from "../service/exam-test-detail.service";
 export class HistoryListComponent implements OnInit {
 
     examTestDetail:ExamTestDetail[];
+    examTestDetail1:ExamTestDetail;
     constructor(private examTestDetailService : ExamTestDetailService) { }
 
     ngOnInit() {

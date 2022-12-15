@@ -12,9 +12,9 @@ export class ExamQuizService {
 
     constructor(private http : HttpClient) { }
     getAll(): Observable<ExamQuiz[]>{
-        return this.http.get<ExamQuiz[]>(API_URL+'/user/examQuiz');
+        return this.http.get<ExamQuiz[]>(API_URL+'/examQuiz');
     }
     findById(id:number):Observable<ExamQuiz>{
-        return this.http.get<ExamQuiz>(`${API_URL}/user/examQuiz/findExamQuizById/${id}`);
+        return this.http.get<ExamQuiz>(`${API_URL}/examQuiz/findExamQuizById/${id}`);
     }
 }

@@ -8,21 +8,21 @@
                         <p class="category">This is table of test detail</p>
                     </div>
                     <div class="content table-responsive table-full-width">
-                        <table class="table table-hover table-striped">
+                        <table class="table table-hover table-striped" >
+<!--                            [formGroup]="examTestDetailFrom" (ngSubmit)="getExamDetail(id)"-->
                             <thead>
                             <tr>
-                                <th>TEST CODE</th>
-                                <th>USER NAME</th>
-                                <th>NAME TEST</th>
-                                <th>TEST TIME</th>
-                                <th>TEST LEVEL</th>
-                                <th>CATEGORY</th>
-                                <th>QUIZ NAME</th>
-                                <th>QUIZ LEVEL</th>
-                                <th>QUIZZES</th>
-                                <th>ANSWER USER</th>
-                                <th>PASS SCORE</th>
-                                <th>SCORE USER</th>
+                                <th style="color: coral">TEST CODE</th>
+                                <th style="color: coral">USER NAME</th>
+                                <th style="color: coral">NAME TEST</th>
+                                <th style="color: coral">TEST TIME</th>
+                                <th style="color: coral">TEST LEVEL</th>
+                                <th style="color: coral">CATEGORY</th>
+                                <th style="color: coral">QUIZ LEVEL</th>
+                                <th style="color: coral">QUIZZES</th>
+                                <th style="color: coral">ANSWER USER</th>
+                                <th style="color: coral">PASS SCORE</th>
+                                <th style="color: coral">SCORE USER</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -32,14 +32,14 @@
                                 <td>{{exam.examQuizzes[i].test.name}}</td>
                                 <td>{{exam.examQuizzes[i].test.maxTime}}</td>
                                 <td>{{exam.examQuizzes[i].test.level.name}}</td>
-                                <td>{{exam.examQuizzes[i].test.categories}}</td>
-                                <td>{{exam.examQuizzes[i].quiz.name}}</td>
+                                <div *ngFor="let category of exam.examQuizzes[i].test.categories; index as i"><td style="text-align:center" >{{category.name}}</td></div>
                                 <td>{{exam.examQuizzes[i].quiz.level.name}}</td>
-                                <td>{{exam.examQuizzes[i].test.quizzes}}</td>
+                                <div *ngFor="let quiz of exam.examQuizzes[i].test.quizzes">{{quiz.name}}</div>
                                 <td>{{exam.examQuizzes[i].answerUser}}</td>
                                 <td>{{exam.examQuizzes[i].test.passScore}}</td>
                                 <td>{{exam.numOfTA}}</td>
                             </tr>
+<!--                            <div><input type="text" formControlName="id" readonly value="{{examTestDetail1.id}}"></div>-->
                             </tbody>
                         </table>
                     </div>

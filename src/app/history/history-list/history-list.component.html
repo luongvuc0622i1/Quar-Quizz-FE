@@ -4,24 +4,37 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header" style="float: left">
-                        <h1 class="title">History Test</h1>
+                        <h1 class="title">History Test of user
+                        </h1>
                         <p class="category">This is table of history list</p>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
                             <thead>
                             <tr>
-                                <th>TEST CODE</th>
-                                <th>NUMOFTA</th>
-                                <th>USER Name</th>
+                                <th>NO</th>
+                                <th>TEST NAME</th>
+                                <th>TEST TIME</th>
+                                <th>TEST LEVEL</th>
+                                <th>CATEGORY</th>
+                                <th>PASS SCORE</th>
+<!--                                <th>USER SCORE</th>-->
+<!--                                <th>NUM TRUE ANSWER </th>-->
+                                <th>ACTION</th>
+
                             </tr>
                             </thead>
                             <tbody>
                             <tr *ngFor="let exam of examTestDetail; index as i">
                                 <td>{{i + 1}}</td>
-                                <td>{{exam.numOfTA}}</td>
-                                <td>{{exam.appUser.username}}</td>
-                                <td><a [routerLink]="['/user/histories/',exam.id]">DETAIL</a></td>
+                                <td>{{exam.examQuizzes[i].test.name}}</td>
+                                <td>{{exam.examQuizzes[i].test.maxTime}}</td>
+                                <td>{{exam.examQuizzes[i].test.level.name}}</td>
+                                <div *ngFor=" let category of exam.examQuizzes[i].test.categories">{{category.name}}</div>
+                                <td>{{exam.examQuizzes[i].test.passScore}}</td>
+<!--                                <td>{{exam.examQuizzes}}</td>-->
+<!--                                <td>{{exam.numOfTA}}</td>-->
+                                <td><a [routerLink]="['/user/examQuizDetail/']">DETAIL</a></td>
 
                             </tr>
                             </tbody>

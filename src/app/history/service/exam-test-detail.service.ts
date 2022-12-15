@@ -11,12 +11,12 @@ export class ExamTestDetailService {
 
     constructor(private http : HttpClient) { }
     getAll(): Observable<ExamTestDetail[]>{
-        return this.http.get<ExamTestDetail[]>(API_URL+'/user/examTest');
+        return this.http.get<ExamTestDetail[]>(API_URL+'/examTest');
     }
     getAll1():Observable<ExamTestDetail[]>{
-        return this.http.get<ExamTestDetail[]>(API_URL+'/user/examHistory');
+        return this.http.get<ExamTestDetail[]>(API_URL+'/examHistory');
     }
     findById(id:number):Observable<ExamTestDetail>{
-        return this.http.get<ExamTestDetail>(`${API_URL}/user/examTest/${id}`);
+        return this.http.get<ExamTestDetail>(`${API_URL}/examTest/${id}`);
     }
 }
