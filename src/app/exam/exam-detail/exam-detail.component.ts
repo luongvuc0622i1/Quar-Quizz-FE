@@ -41,6 +41,8 @@ export class ExamDetailComponent implements OnInit {
 
   ngAfterViewInit() {
     this.showTab(0);
+
+    this.setTimeOut();
   }
 
   //step
@@ -145,25 +147,60 @@ export class ExamDetailComponent implements OnInit {
     });
   }
 
-  done() {
+  submitTest() {
     let examQuizzes = [];
         this.id_user = Number(localStorage.getItem('ID_KEY'));
     for (let i=0; i< this.examQuizArId.length; i++) {
       examQuizzes.push({"id": this.examQuizArId[i]});
     }
-    console.log(examQuizzes);
     this.examTest = {
       "examQuizzes": examQuizzes,
       // @ts-ignore
       appUser: {"id":this.id_user}
     }
-    console.log(this.examTest);
+    console.log("da vao");
     this.examService.saveTest(this.examTest).subscribe(() =>{
-      // this.testForm.reset();
       console.log('Create done!');
     }, error => {
       console.log(error)
     });
     this.examQuizArId = [];
+    // @ts-ignore
+    // window.location="https://viblo.asia.vn"
+  }
+
+  setTimeOut() {
+    let timeout = this.test.maxTime.split(':');
+
+    //time down
+    // Thiết lập thời gian đích mà ta sẽ đếm
+    var countDownDate = new Date().getTime() + Number(timeout[0]) * 60 * 60 * 1000 + Number(timeout[1]) * 60 * 1000 + Number(timeout[2]) * 1000 + 1000;
+
+
+    // cập nhập thời gian sau mỗi 1 giây
+    var x = setInterval(function() {
+
+      // Lấy thời gian hiện tại
+      var now = new Date().getTime();
+
+      // Lấy số thời gian chênh lệch
+      var distance = countDownDate - now;
+
+      // Tính toán số ngày, giờ, phút, giây từ thời gian chênh lệch
+      var hours = Math.floor(distance / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // HIển thị chuỗi thời gian trong thẻ p
+      document.getElementById("demo").innerHTML = hours + ":"
+          + minutes + ":" + seconds;
+
+      // Nếu thời gian kết thúc, hiển thị chuỗi thông báo
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "0:0:0"
+        document.getElementById("submit").click();
+      }
+    }, 1000);
   }
 }

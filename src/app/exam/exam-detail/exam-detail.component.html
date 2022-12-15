@@ -5,7 +5,7 @@
                 <div class="modal-content" style="width: 1100px; height: 150px; position: center; left: 30px">
                     <div class="modal-header" style="height: 60px">
                         <h1>{{test.name}}</h1>
-                        <button (click)="done()" style="left: 980px; top: -52px">nop bai</button>
+                        <button (click)="submitTest()" style="left: 980px; top: -52px" id="submit">Submit</button>
                     </div>
                     <div class="modal-body">
                         <div class="col-md-3">
@@ -29,7 +29,7 @@
                         <div class="col-md-3" style="text-align: center">
                             <div class="form-group">
                                 <label>Time Out</label>
-                                <p>{{test.maxTime}}</p>
+                                <p id="demo">{{test.maxTime}}</p>
                             </div>
                         </div>
                     </div>
