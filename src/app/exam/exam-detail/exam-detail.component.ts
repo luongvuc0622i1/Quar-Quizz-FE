@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Test} from "../../model/test";
 import {TestService} from "../../service/test/test.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {ExamService} from "../../service/exam/exam.service";
 import {ExamTest} from "../../model/exam-test";
 import {ExamQuiz} from "../../model/exam-quiz";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-exam-detail',
@@ -27,7 +28,7 @@ export class ExamDetailComponent implements OnInit {
 
   constructor(private testService: TestService,
               private examService: ExamService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
     });
@@ -202,5 +203,31 @@ export class ExamDetailComponent implements OnInit {
         document.getElementById("submit").click();
       }
     }, 1000);
+  }
+
+  logOut() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+            'Log Out',
+            'Go to Home Page!',
+            'success'
+        )
+        localStorage.clear();
+        this.router.navigate(['home']).then(()=>{
+          location.reload()
+        })
+      }
+    })
+
+
   }
 }
