@@ -20,8 +20,9 @@ export class ExamDetailComponent implements OnInit {
   id_user: number;
   id_quiz: number;
   examQuiz: ExamQuiz;
-  examQuizArId: number[] = [];
+  examQuizAr: ExamQuiz[] = [];
   examTest: ExamTest;
+  examQuizzesDoneCheck: [];
 
   //step
   currentTab = 0; // Current tab is set to be the first tab (0)
@@ -141,33 +142,89 @@ export class ExamDetailComponent implements OnInit {
 
   send() {
     this.examService.saveQuiz(this.examQuiz).subscribe(examQuizDB => {
-      this.examQuizArId.push(examQuizDB.id);
-      console.log(this.examQuizArId); //==[27,28,29]
+      this.examService.findEQById(examQuizDB.id).subscribe(examQuiz => {
+        this.examQuizAr.push(examQuiz);
+      });
     }, error => {
       console.log(error)
     });
   }
 
   submitTest() {
-    let examQuizzes = [];
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Submit test!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+            'Done!',
+            ' ',
+            'success'
+        )
+        let examQuizzes = [];
         this.id_user = Number(localStorage.getItem('ID_KEY'));
-    for (let i=0; i< this.examQuizArId.length; i++) {
-      examQuizzes.push({"id": this.examQuizArId[i]});
+        this.checkAr(this.examQuizAr);
+        console.log(this.examQuizzesDoneCheck);
+        this.examTest = {
+          "examQuizzes": this.examQuizzesDoneCheck,
+          // @ts-ignore
+          appUser: {"id":this.id_user}
+        }
+        this.examService.saveTest(this.examTest).subscribe(() =>{
+          console.log('Create done!');
+          Swal.fire(
+              'Done!',
+              ' ',
+              'success'
+          )
+          // window.location.href = 'http://localhost:4200/user/exam/list';
+        }, error => {
+          console.log('chua nop dc bai!');
+        });
+      }
+    })
+  }
+
+  checkAr(examQuizzes: ExamQuiz[]) {
+    console.log(examQuizzes);
+    this.examQuizzesDoneCheck = [];
+    let examQuizzesRV = examQuizzes.reverse();
+    let arrC = [];
+    let arrCid = [];
+    let arrD = [];
+    let arrDid = [];
+    for (let i = 0; i < examQuizzesRV.length; i++) {
+      if(!arrC.includes(examQuizzesRV[i].quiz.id)) {
+        arrC.push(examQuizzesRV[i].quiz.id);
+        arrCid.push(examQuizzesRV[i].id);
+      } else {
+        arrD.push(examQuizzesRV[i].quiz.id);
+        arrDid.push(examQuizzesRV[i].id);
+      }
     }
-    this.examTest = {
-      "examQuizzes": examQuizzes,
+    console.log("tao");
+    console.log(arrC);
+    console.log(arrCid);
+    console.log("xoa");
+    console.log(arrD);
+    console.log(arrDid);
+
+    for (let j = 0; j < arrCid.length; j++) {
       // @ts-ignore
-      appUser: {"id":this.id_user}
+      this.examQuizzesDoneCheck.push({"id": arrCid[j]});
     }
-    console.log("da vao");
-    this.examService.saveTest(this.examTest).subscribe(() =>{
-      console.log('Create done!');
-    }, error => {
-      console.log(error)
-    });
-    this.examQuizArId = [];
-    // @ts-ignore
-    // window.location="https://viblo.asia.vn"
+    for (let z = 0; z < arrDid.length; z++) {
+      this.examService.delete(arrDid[z]).subscribe(() => {
+        console.log("da xoa " + arrDid[z]);
+      }, e => {
+        console.log(e);
+      });
+    }
   }
 
   setTimeOut() {
