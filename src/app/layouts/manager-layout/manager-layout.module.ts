@@ -29,6 +29,7 @@ import {DeleteComponent} from "../../category/delete/delete.component";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
         MatTableModule,
         MatExpansionModule,
         MatListModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatPaginatorModule
     ],
     declarations: [
         HomeComponent,

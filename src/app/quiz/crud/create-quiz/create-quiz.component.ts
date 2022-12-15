@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Quiz} from "../../model/quiz";
 import {QuizService} from "../../service/quiz.service";
 import {Level} from "../../../quiz/model/level";
-import {Categories} from "../../model/categories";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TypeQuizzes} from "../../model/typequizzes";
+import {Categories} from "../../model/categories";
 
 declare var $: any;
 

@@ -20,7 +20,7 @@ export class UpdateQuizComponent implements OnInit {
     levels: Level[] = [];
     typeQuizzes: TypeQuizzes[] = [];
     categories: Categories[] = [];
-
+    quiz:Quiz;
     option1: any;
     option2: any;
     option3: any;
@@ -48,15 +48,15 @@ export class UpdateQuizComponent implements OnInit {
                 correct_answer: new FormControl(quiz2.correct_answer,[Validators.required]),
                 level: new FormControl(quiz2.level,[Validators.required]),
                 typeQuiz: new FormControl(quiz2.typeQuiz,[Validators.required]),
-                category: new FormControl(quiz2.category),
+                category: new FormControl(quiz2.category)
             });
-            console.log(this.quizForm)
         });
     }
 
 
     ngOnInit(): void {
         this.getAll();
+
     }
 
     get name() {
@@ -128,6 +128,7 @@ export class UpdateQuizComponent implements OnInit {
         let correct_answer1: String = "";
         let arTypeQuizzes;
         let answer = quiz.answer1 + ";" + quiz.answer2 + ";" + quiz.answer3 + ";" + quiz.answer4;
+        let name :String;
 
         for (let i = 0; i < quiz.category.length; i++) {
             id = quiz.category[i];
@@ -172,14 +173,14 @@ export class UpdateQuizComponent implements OnInit {
         }
 
         quiz2 = {
+            name: quiz.name,
             answer1: answer1,
             answer2: answer2,
             answer3:answer3 ,
             answer4: answer4,
             correct_answer: arCorrectAnswer,
-            name: quiz.name,
-            typeQuiz: quiz.typeQuizzes.id,
             level: quiz.level.id,
+            typeQuiz: quiz.typeQuizzes.id,
             category: arCategory2
         }
         return quiz2;

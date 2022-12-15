@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Quiz} from "../../model/quiz";
 import {QuizService} from "../../service/quiz.service";
 import {resourceChangeTicket} from "@angular/compiler-cli/src/ngtsc/core";
 import Swal from "sweetalert2";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MatPaginator} from "@angular/material/paginator";
 
 
 @Component({
@@ -13,6 +14,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ListQuizComponent implements OnInit {
     quizzes: Quiz[] = [];
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private quizService: QuizService, private activatedRoute: ActivatedRoute,
                 private router: Router) {
@@ -33,6 +35,8 @@ export class ListQuizComponent implements OnInit {
                 });
             });
         });
+        // @ts-ignore
+        $("#myTable tr").paginator = this.paginator;
     };
 
 

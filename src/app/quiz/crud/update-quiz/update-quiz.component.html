@@ -12,9 +12,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>What do you want to ask?</label>
-                                        <textarea formControlName="name" placeholder="Quiz" class="form-control here"
-                                                  id="" cols="30" rows="2"></textarea>
-
+                                        <textarea placeholder="Quiz" class="form-control here"
+                                                 cols="30" rows="2" formControlName="name"></textarea>
                                     </div>
                                     <div *ngIf="!name?.valid && (name?.dirty || name?.touched)">
                                         <div [hidden]="!name?.errors?.['required']">
@@ -102,7 +101,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Categories</label>
-                                        <mat-selection-list #category formControlName="category">
+                                        <mat-selection-list formControlName="category">
                                             <mat-list-option *ngFor="let category of categories" value="{{category.id}}">
                                                 {{category.name}}
                                             </mat-list-option>
