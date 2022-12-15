@@ -4,8 +4,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header" style="float: left">
-                        <h1 class="title">User List</h1>
-                        <p class="category">User are all listed below </p>
+                        <h1 class="title">Exam Test List</h1>
+                        <p class="category">Exam Test are all listed below </p>
                     </div>
                     <div class="header col-lg-8">
                         <div class="search-box">
@@ -47,10 +47,7 @@
                                 <div *ngFor=" let category of exam.examQuizzes[i].test.categories">{{category.name}}</div>
                                 <td>{{exam.examQuizzes[i].test.passScore}}</td>
 <!--                                <td>{{sum}}</td>-->
-                                <!--                                <td>{{exam.numOfTA}}</td>-->
-                                <!--                                <td>{{exam.examQuizzes}}</td>-->
-                                <!--                                <td>{{exam.numOfTA}}</td>-->
-                                <td><a [routerLink]="['/user/examQuizDetail/',exam.id]"><mat-icon color="warn">quiz_rounded</mat-icon></a></td>
+                                <td><a [routerLink]="['/manager/detail-result/',exam.id]"><mat-icon color="warn">quiz_rounded</mat-icon></a></td>
 
                             </tr>
                             </tbody>

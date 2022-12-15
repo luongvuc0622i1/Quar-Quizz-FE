@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ExamTestDetail} from "../../history/interface/exam-test-detail";
 import {ExamTestDetailService} from "../../history/service/exam-test-detail.service";
 import {MatPaginator} from "@angular/material/paginator";
@@ -8,7 +8,7 @@ import {MatPaginator} from "@angular/material/paginator";
   templateUrl: './user-result.component.html',
   styleUrls: ['./user-result.component.scss']
 })
-export class UserResultComponent implements OnInit {
+export class UserResultComponent implements OnInit, AfterViewInit {
 
   // sum:number;
   examTestDetail:ExamTestDetail[];
