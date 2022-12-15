@@ -22,4 +22,5 @@ export class ExamQuizDetailComponent implements OnInit {
         })
     }
 
+
 }

@@ -25,6 +25,6 @@ export const UserLayoutRoutes: Routes = [
   { path: 'notifications',  component: NotificationsComponent },
   { path: 'histories',        component: HistoryListComponent},
   { path: 'histories/:id',    component: HistoryDetailComponent },
-    {path:'examQuizDetail', component:ExamQuizDetailComponent}
+    {path:'examQuizDetail/:id', component:ExamQuizDetailComponent}
 
 ];

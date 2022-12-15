@@ -18,7 +18,7 @@
                                 <th>TEST LEVEL</th>
                                 <th>CATEGORY</th>
                                 <th>PASS SCORE</th>
-<!--                                <th>USER SCORE</th>-->
+                                <th>USER SCORE</th>
 <!--                                <th>NUM TRUE ANSWER </th>-->
                                 <th>ACTION</th>
 
@@ -32,9 +32,11 @@
                                 <td>{{exam.examQuizzes[i].test.level.name}}</td>
                                 <div *ngFor=" let category of exam.examQuizzes[i].test.categories">{{category.name}}</div>
                                 <td>{{exam.examQuizzes[i].test.passScore}}</td>
+                                <td>{{sum}}</td>
+<!--                                <td>{{exam.numOfTA}}</td>-->
 <!--                                <td>{{exam.examQuizzes}}</td>-->
 <!--                                <td>{{exam.numOfTA}}</td>-->
-                                <td><a [routerLink]="['/user/examQuizDetail/']">DETAIL</a></td>
+                                <td><a [routerLink]="['/user/examQuizDetail/',exam.id]">DETAIL</a></td>
 
                             </tr>
                             </tbody>
