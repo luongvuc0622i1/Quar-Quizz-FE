@@ -23,7 +23,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { HomePageComponent } from './home-page/home-page.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-import { ListResultComponent } from './result/list-result/list-result.component';
+import { ListResultComponent } from './result/list-user/list-result.component';
+import { UserResultComponent } from './result/user-result/user-result.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -37,7 +39,8 @@ import { ListResultComponent } from './result/list-result/list-result.component'
         MatFormFieldModule,
         MatIconModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        MatPaginatorModule
     ],
     declarations: [
         AppComponent,
@@ -45,6 +48,7 @@ import { ListResultComponent } from './result/list-result/list-result.component'
         FormLoginComponent,
         HomePageComponent,
         UserLayoutComponent,
+        UserResultComponent,
     ],
     providers: [
         {

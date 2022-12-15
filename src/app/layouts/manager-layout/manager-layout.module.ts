@@ -30,7 +30,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import {ListResultComponent} from "../../result/list-result/list-result.component";
+import {ListResultComponent} from "../../result/list-user/list-result.component";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {ListResultComponent} from "../../result/list-result/list-result.componen
         MatExpansionModule,
         MatListModule,
         MatFormFieldModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatIconModule
     ],
     declarations: [
         HomeComponent,
