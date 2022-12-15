@@ -30,6 +30,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {ListResultComponent} from "../../result/list-result/list-result.component";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         TypographyComponent,
         IconsComponent,
         MapsComponent,
-        NotificationsComponent
+        NotificationsComponent,
+        ListResultComponent
     ]
 })
 

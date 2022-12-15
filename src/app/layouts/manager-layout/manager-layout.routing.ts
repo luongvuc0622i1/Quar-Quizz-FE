@@ -16,6 +16,7 @@ import {ListQuizComponent} from "../../quiz/crud/list-quiz/list-quiz.component";
 import {CreateQuizComponent} from "../../quiz/crud/create-quiz/create-quiz.component";
 import {UpdateQuizComponent} from "../../quiz/crud/update-quiz/update-quiz.component";
 import {DetailTestComponent} from "../../tests/crud/detail-test/detail-test.component";
+import {ListResultComponent} from "../../result/list-result/list-result.component";
 
 
 export const ManagerLayoutRoutes: Routes = [
@@ -35,4 +36,6 @@ export const ManagerLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
+    { path: 'result',  component: ListResultComponent },
+
 ];
