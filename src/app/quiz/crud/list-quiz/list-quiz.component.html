@@ -23,11 +23,11 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th>No.</th>
-                                <th>Quiz <i class="fa fa-sort"></i></th>
-                                <th>Quiz Type<i class="fa fa-sort"></i></th>
-                                <th>Level <i class="fa fa-sort"></i></th>
-                                <th>Actions</th>
+                                <th class="col-md-1">No. <i class="fa fa-sort"></i></th>
+                                <th class="col-md-6">Quiz <i class="fa fa-sort"></i></th>
+                                <th class="col-md-2">Quiz Type <i class="fa fa-sort"></i></th>
+                                <th class="col-md-2">Level <i class="fa fa-sort"></i></th>
+                                <th class="col-md-1">Actions</th>
                             </tr>
                             </thead>
                             <tbody *ngFor="let quiz of quizzes ; index as i" id="myTable">
@@ -60,12 +60,11 @@
                             </tr>
                             </tbody>
                         </table>
-                        <mat-paginator [length]=quizzes.length
-                                       [pageSize]="5"
-                                       [pageSizeOptions]="[5,10,20,30]"
-                                       aria-label="Select page">
-                        </mat-paginator>
-
+<!--                        <mat-paginator [length]=quizzes.length-->
+<!--                                       [pageSize]="5"-->
+<!--                                       [pageSizeOptions]="[5,10,20,30]"-->
+<!--                                       aria-label="Select page">-->
+<!--                        </mat-paginator>-->
                     </div>
                 </div>
             </div>
