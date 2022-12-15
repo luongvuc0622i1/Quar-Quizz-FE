@@ -39,22 +39,25 @@
                                 <td>{{user.email}}</td>
                                 <td *ngIf="user.status==1">Active</td>
                                 <td *ngIf="user.status==0">Lock</td>
-<!--                                <td>-->
-<!--                                    &lt;!&ndash;                                    <a href="#" class="view" title="View" data-toggle="tooltip"><i&ndash;&gt;-->
-<!--                                    &lt;!&ndash;                                            class="material-icons">&#xE417;</i></a>&ndash;&gt;-->
+                                <td>
+                                    <!--                                    <a href="#" class="view" title="View" data-toggle="tooltip"><i-->
+                                    <!--                                            class="material-icons">&#xE417;</i></a>-->
 
-<!--                                    <a [routerLink]="['/manager/quiz/update',quiz.id]" class="edit " title="Edit"-->
+<!--                                    <a [routerLink]="['/manager/user-result',user.id]" class="edit " title="Edit"-->
 <!--                                       data-toggle="tooltip"><i-->
 <!--                                            class="material-icons">&#xE254;</i>-->
 <!--                                        <p class="hidden-lg hidden-md">Update</p>-->
 <!--                                    </a>-->
+
+                                    <a [routerLink]="['/manager/user-result',user.id]"><mat-icon color="warn">drive_file_move_rounded</mat-icon></a>
+
 
 <!--                                    <a class="delete" title="Delete" data-toggle="tooltip"-->
 <!--                                       (click)="deleteQuiz(quiz.id)"><i-->
 <!--                                            class="material-icons">&#xE872;</i>-->
 <!--                                        <p class="hidden-lg hidden-md">Delete</p>-->
 <!--                                    </a>-->
-<!--                                </td>-->
+                                </td>
                             </tr>
 <!--                            <tr id="child" class="collapse text-muted">-->
 <!--                                <td colspan="6">Answer:-->

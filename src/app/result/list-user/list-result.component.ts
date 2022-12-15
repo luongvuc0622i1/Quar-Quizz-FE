@@ -5,7 +5,7 @@ import {User} from "../../model/user";
 import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-list-result',
+  selector: 'app-list-user',
   templateUrl: './list-result.component.html',
   styleUrls: ['./list-result.component.scss']
 })
@@ -13,15 +13,13 @@ export class ListResultComponent implements OnInit, AfterViewInit {
 
   users: User[] = [];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
   constructor(private resultService: ResultService,
               private router: Router) { }
 
   ngOnInit(): void {
       this.getAll();
   }
-
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   ngAfterViewInit() {
     $(document).ready(function () {
       $("#myInput").on("keyup", function () {
