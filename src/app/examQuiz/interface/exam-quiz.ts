@@ -1,5 +1,7 @@
 import {Test} from "../../model/test";
 import {Quiz} from "../../quiz/model/quiz";
+import {User} from "../../model/user";
+
 
 export interface ExamQuiz {
     id:number;
@@ -7,4 +9,5 @@ export interface ExamQuiz {
     test:Test;
     answerUser:string;
     status : number;
+    appUser: User;
 }

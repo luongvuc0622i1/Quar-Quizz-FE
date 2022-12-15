@@ -26,6 +26,7 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
 import { ListResultComponent } from './result/list-user/list-result.component';
 import { UserResultComponent } from './result/user-result/user-result.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { DetailResultComponent } from './result/detail-result/detail-result.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -48,7 +49,6 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         FormLoginComponent,
         HomePageComponent,
         UserLayoutComponent,
-        UserResultComponent,
     ],
     providers: [
         {

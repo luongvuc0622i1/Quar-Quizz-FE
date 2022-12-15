@@ -32,6 +32,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {ListResultComponent} from "../../result/list-user/list-result.component";
 import {MatIconModule} from "@angular/material/icon";
+import {UserResultComponent} from "../../result/user-result/user-result.component";
+import {DetailResultComponent} from "../../result/detail-result/detail-result.component";
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import {MatIconModule} from "@angular/material/icon";
         IconsComponent,
         MapsComponent,
         NotificationsComponent,
-        ListResultComponent
+        ListResultComponent,
+        UserResultComponent,
+        DetailResultComponent
     ]
 })
 
