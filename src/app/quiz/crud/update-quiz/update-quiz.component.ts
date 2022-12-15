@@ -20,7 +20,7 @@ export class UpdateQuizComponent implements OnInit {
     levels: Level[] = [];
     typeQuizzes: TypeQuizzes[] = [];
     categories: Categories[] = [];
-    quiz:Quiz;
+    quiz: Quiz;
     option1: any;
     option2: any;
     option3: any;
@@ -28,6 +28,17 @@ export class UpdateQuizComponent implements OnInit {
 
     constructor(private quizService: QuizService,
                 private activatedRoute: ActivatedRoute) {
+        this.quizForm = new FormGroup(    {
+            name: new FormControl(''),
+            answer1: new FormControl(''),
+            answer2: new FormControl(''),
+            answer3: new FormControl(''),
+            answer4: new FormControl(''),
+            correct_answer: new FormControl(''),
+            level: new FormControl(''),
+            typeQuiz: new FormControl(''),
+            category: new FormControl('')
+        });
         this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
             this.id = +paramMap.get('id');
             this.getQuiz(this.id);
@@ -35,19 +46,19 @@ export class UpdateQuizComponent implements OnInit {
     }
 
     private getQuiz(id: number) {
-        return this.quizService.findById(id).subscribe(quiz=> {
+        return this.quizService.findById(id).subscribe(quiz => {
             console.log(quiz)
             let quiz2 = this.changeToForm(quiz);
             console.log(quiz2)
             this.quizForm = new FormGroup({
-                name: new FormControl(quiz2.name,[Validators.required]),
-                answer1: new FormControl(quiz2.answer1,[Validators.required]),
-                answer2: new FormControl(quiz2.answer2,[Validators.required]),
-                answer3: new FormControl(quiz2.answer3,[Validators.required]),
-                answer4: new FormControl(quiz2.answer4,[Validators.required]),
-                correct_answer: new FormControl(quiz2.correct_answer,[Validators.required]),
-                level: new FormControl(quiz2.level,[Validators.required]),
-                typeQuiz: new FormControl(quiz2.typeQuiz,[Validators.required]),
+                name: new FormControl(quiz2.name, [Validators.required]),
+                answer1: new FormControl(quiz2.answer1, [Validators.required]),
+                answer2: new FormControl(quiz2.answer2, [Validators.required]),
+                answer3: new FormControl(quiz2.answer3, [Validators.required]),
+                answer4: new FormControl(quiz2.answer4, [Validators.required]),
+                correct_answer: new FormControl(quiz2.correct_answer, [Validators.required]),
+                level: new FormControl(quiz2.level, [Validators.required]),
+                typeQuiz: new FormControl(quiz2.typeQuiz, [Validators.required]),
                 category: new FormControl(quiz2.category)
             });
         });
@@ -91,6 +102,7 @@ export class UpdateQuizComponent implements OnInit {
     get typeQuiz() {
         return this.quizForm.get('typeQuiz')
     }
+
     get category() {
         return this.quizForm.get('category')
     }
@@ -100,7 +112,7 @@ export class UpdateQuizComponent implements OnInit {
         console.log(quiz);
         const quiz1 = this.changeToQuiz(quiz);
         console.log(quiz1);
-        this.quizService.update(id,quiz1).subscribe(() => {
+        this.quizService.update(id, quiz1).subscribe(() => {
             this.quizForm.reset();
             this.showNotification('top', 'center')
         }, error => {
@@ -128,7 +140,7 @@ export class UpdateQuizComponent implements OnInit {
         let correct_answer1: String = "";
         let arTypeQuizzes;
         let answer = quiz.answer1 + ";" + quiz.answer2 + ";" + quiz.answer3 + ";" + quiz.answer4;
-        let name :String;
+        let name: String;
 
         for (let i = 0; i < quiz.category.length; i++) {
             id = quiz.category[i];
@@ -159,14 +171,14 @@ export class UpdateQuizComponent implements OnInit {
         let answer2;
         let answer3;
         let answer4;
-        let arCategory2 =[];
-        let arCorrectAnswer= quiz.correct_answer.split(";")
+        let arCategory2 = [];
+        let arCorrectAnswer = quiz.correct_answer.split(";")
         let arAnswer = quiz.answer.split(";");
         for (let i = 0; i < arAnswer.length; i++) {
-            answer1=arAnswer[0];
-            answer2=arAnswer[1];
-            answer3=arAnswer[2];
-            answer4=arAnswer[3];
+            answer1 = arAnswer[0];
+            answer2 = arAnswer[1];
+            answer3 = arAnswer[2];
+            answer4 = arAnswer[3];
         }
         for (let i = 0; i < quiz.categories.length; i++) {
             arCategory2.push(quiz.categories[i].id.toString());
@@ -176,7 +188,7 @@ export class UpdateQuizComponent implements OnInit {
             name: quiz.name,
             answer1: answer1,
             answer2: answer2,
-            answer3:answer3 ,
+            answer3: answer3,
             answer4: answer4,
             correct_answer: arCorrectAnswer,
             level: quiz.level.id,
