@@ -3,6 +3,7 @@ import {UserService} from "../service/user/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {matchValidator} from "../service/form-validators";
 import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ export class UserComponent implements OnInit {
   user : any;
   password : any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router:Router) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -106,5 +107,31 @@ export class UserComponent implements OnInit {
       // @ts-ignore
       x.type = "password";
     }
+  }
+
+  logOut() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+            'Log Out',
+            'Go to Home Page!',
+            'success'
+        )
+        localStorage.clear();
+        this.router.navigate(['home']).then(()=>{
+          location.reload()
+        })
+      }
+    })
+
+
   }
 }
