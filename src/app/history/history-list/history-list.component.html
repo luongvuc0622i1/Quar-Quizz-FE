@@ -76,7 +76,7 @@
 <!--                                <td>{{sum}}</td>-->
 <!--                                <td>{{num()}}</td>-->
 <!--                                <td>{{exam.examQuizzes[i].test.quizzes}}</td>-->
-                                <td>{{exam.numOfTA/exam.examQuizzes[i].test.quizzes.length*100}}</td>
+                                <td>{{(exam.numOfTA/exam.examQuizzes[i].test.quizzes.length*100).toFixed()}}</td>
                                 <div class="header">
                                     <button class="button-19" role="button" [routerLink]="['/user/examQuizDetail/',exam.id]">DETAIL</button>
                                 </div>
