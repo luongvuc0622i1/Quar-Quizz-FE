@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Test} from "../../model/test";
 import {TestService} from "../../service/test/test.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {ExamService} from "../../service/exam/exam.service";
 import {ExamTest} from "../../model/exam-test";
 import {ExamQuiz} from "../../model/exam-quiz";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-exam-detail',
@@ -14,20 +15,21 @@ import {ExamQuiz} from "../../model/exam-quiz";
 export class ExamDetailComponent implements OnInit {
   test: Test;
   answerUserAr: number[] = [];
-  answerUser: String;
+  answerUser: String = '';
   id: number; //id_test
   id_user: number;
   id_quiz: number;
   examQuiz: ExamQuiz;
-  examQuizArId: number[] = [];
+  examQuizAr: ExamQuiz[] = [];
   examTest: ExamTest;
+  examQuizzesDoneCheck: [];
 
   //step
   currentTab = 0; // Current tab is set to be the first tab (0)
 
   constructor(private testService: TestService,
               private examService: ExamService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
     });
@@ -119,7 +121,6 @@ export class ExamDetailComponent implements OnInit {
   }
 
   click(value: number) {
-    this.answerUserAr = [];
     this.answerUserAr.push(value);
     this.answerUser = this.answerUserAr.join(';');
     this.id_user = Number(localStorage.getItem('ID_KEY'));
@@ -139,34 +140,88 @@ export class ExamDetailComponent implements OnInit {
   }
 
   send() {
+    console.log(this.examQuiz);
     this.examService.saveQuiz(this.examQuiz).subscribe(examQuizDB => {
-      this.examQuizArId.push(examQuizDB.id);
-      console.log(this.examQuizArId); //==[27,28,29]
+      this.examService.findEQById(examQuizDB.id).subscribe(examQuiz => {
+        this.examQuizAr.push(examQuiz);
+      });
     }, error => {
       console.log(error)
     });
+    this.answerUserAr = [];
+    this.answerUser = '';
+    this.examQuiz = null;
   }
 
   submitTest() {
-    let examQuizzes = [];
+    this.checkAr(this.examQuizAr);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: this.examQuizzesDoneCheck.length + " / " + this.test.quizzes.length + " done!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Submit test!'
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.id_user = Number(localStorage.getItem('ID_KEY'));
-    for (let i=0; i< this.examQuizArId.length; i++) {
-      examQuizzes.push({"id": this.examQuizArId[i]});
+        console.log(this.examQuizzesDoneCheck);
+        this.examTest = {
+          "examQuizzes": this.examQuizzesDoneCheck,
+          // @ts-ignore
+          appUser: {"id":this.id_user}
+        }
+        this.examService.saveTest(this.examTest).subscribe(() =>{
+          console.log('Create done!');
+          Swal.fire(
+              'Done!',
+              ' ',
+              'success'
+          )
+          // window.location.href = 'http://localhost:4200/user/exam/list';
+        }, error => {
+          console.log('chua nop dc bai!');
+        });
+      }
+    })
+  }
+
+  checkAr(examQuizzes: ExamQuiz[]) {
+    console.log(examQuizzes);
+    this.examQuizzesDoneCheck = [];
+    let examQuizzesRV = examQuizzes.reverse();
+    let arrC = [];
+    let arrCid = [];
+    let arrD = [];
+    let arrDid = [];
+    for (let i = 0; i < examQuizzesRV.length; i++) {
+      if(!arrC.includes(examQuizzesRV[i].quiz.id)) {
+        arrC.push(examQuizzesRV[i].quiz.id);
+        arrCid.push(examQuizzesRV[i].id);
+      } else {
+        arrD.push(examQuizzesRV[i].quiz.id);
+        arrDid.push(examQuizzesRV[i].id);
+      }
     }
-    this.examTest = {
-      "examQuizzes": examQuizzes,
+    console.log("tao");
+    console.log(arrC);
+    console.log(arrCid);
+    console.log("xoa");
+    console.log(arrD);
+    console.log(arrDid);
+
+    for (let j = 0; j < arrCid.length; j++) {
       // @ts-ignore
-      appUser: {"id":this.id_user}
+      this.examQuizzesDoneCheck.push({"id": arrCid[j]});
     }
-    console.log("da vao");
-    this.examService.saveTest(this.examTest).subscribe(() =>{
-      console.log('Create done!');
-    }, error => {
-      console.log(error)
-    });
-    this.examQuizArId = [];
-    // @ts-ignore
-    // window.location="https://viblo.asia.vn"
+    for (let z = 0; z < arrDid.length; z++) {
+      this.examService.delete(arrDid[z]).subscribe(() => {
+        console.log("da xoa " + arrDid[z]);
+      }, e => {
+        console.log(e);
+      });
+    }
   }
 
   setTimeOut() {
@@ -202,5 +257,29 @@ export class ExamDetailComponent implements OnInit {
         document.getElementById("submit").click();
       }
     }, 1000);
+  }
+
+  logOut() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+            'Log Out',
+            'Go to Home Page!',
+            'success'
+        )
+        localStorage.clear();
+        this.router.navigate(['home']).then(() => {
+          location.reload()
+        })
+      }
+    })
   }
 }

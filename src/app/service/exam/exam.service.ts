@@ -4,6 +4,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ExamQuiz} from "../../model/exam-quiz";
 import {ExamTest} from "../../model/exam-test";
+import {Quiz} from "../../quiz/model/quiz";
+import {User} from "../../model/user";
 
 const API_URL=`${environment.apiUrl}`
 
@@ -20,5 +22,13 @@ export class ExamService {
 
   saveTest(examTest: ExamTest): Observable<ExamQuiz> {
     return this.http.post<ExamQuiz>(API_URL + `/user/examTest/create`, examTest);
+  }
+
+  findEQById(id: number) {
+    return this.http.get<ExamQuiz>(`${API_URL}/user/examQuiz/findExamQuizById/${id}`);
+  }
+
+  delete(id: number): Observable<ExamQuiz> {
+    return this.http.delete<ExamQuiz>(`${API_URL}/user/examQuiz/deleteById/${id}`);
   }
 }
