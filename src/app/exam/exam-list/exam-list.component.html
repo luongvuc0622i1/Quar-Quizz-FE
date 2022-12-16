@@ -34,31 +34,33 @@
             </div>
 
             <div class="test-button">
-                <button class="button-19" role="button" [routerLink]="['/user/exam/list']">Take a test <i class="pe-7s-plugin"></i></button>
+                <button class="button-19" role="button" [routerLink]="['/user/exam/list']">Take a test <i
+                        class="pe-7s-plugin"></i></button>
             </div>
 
         </div>
     </nav>
-    <div class="container">
-        <form id="regForm" action="">
-            <div class="row">
-                <div class="col-md-2" *ngFor="let test of tests; index as i">
-
-            <div class="modal-dialog widget-wrap tab" [routerLink]="['/user/exam/detail/',test.id]">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3><span class="label label-warning" id="qid">{{i+1}}</span> {{test.name}}</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p>Level: {{test.level.name}}</p>
-                        <p>Number of quizzes: {{test.quizzes.length}}</p>
-                        <p>Max time: {{test.maxTime}}</p>
+    <div class="main-content">
+        <div class="container-fluid">
+            <section class="property-grid grid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let test of tests; index as i">
+                            <div class="card-body">
+                                <h2 class="card-title"><span class="label label-warning "
+                                                             id="id">{{i + 1}}</span>  {{test.name}}
+                                </h2>
+                                <p class="card-text">Level: {{test.level.name}}</p>
+                                <p class="card-text">Number of quizzes: {{test.quizzes.length}}</p>
+                                <p class="card-text">Max time: {{test.maxTime}}</p>
+                                <button [routerLink]="['/user/exam/detail/',test.id]" class="btn btn-warning">Take this
+                                    test!
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-                </div>
-            </div>
-        </form>
+            </section>
+        </div>
     </div>
 </div>

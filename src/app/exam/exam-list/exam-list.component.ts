@@ -51,7 +51,13 @@ export class ExamListComponent implements OnInit {
         })
       }
     })
-
-
   }
+
+
+  gridColumns = 3;
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+  }
+
 }
