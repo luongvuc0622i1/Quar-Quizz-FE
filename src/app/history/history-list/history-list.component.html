@@ -20,8 +20,8 @@
 
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Test history</a></li>
+                            <li><a [routerLink]="['/user/user']">Profile</a></li>
+                            <li><a [routerLink]="['/user/histories']">Test history</a></li>
                         </ul>
                     </li>
                     <li>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="test-button">
-                <button class="button-19" role="button"><a href=""></a>Take a test <i class="pe-7s-plugin"></i></button>
+                <button class="button-19" role="button" [routerLink]="['/user/exam/list']">Take a test <i class="pe-7s-plugin"></i></button>
             </div>
 
         </div>
