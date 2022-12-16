@@ -179,10 +179,10 @@ export class ExamDetailComponent implements OnInit {
               ' ',
               'success'
           )
-          // window.location.href = 'http://localhost:4200/user/exam/list';
         }, error => {
           console.log('chua nop dc bai!');
         });
+        window.location.href = 'http://localhost:4200/user/exam/list';
       }
     })
   }
