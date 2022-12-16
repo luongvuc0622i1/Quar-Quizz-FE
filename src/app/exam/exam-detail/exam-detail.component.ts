@@ -15,7 +15,7 @@ import Swal from "sweetalert2";
 export class ExamDetailComponent implements OnInit {
   test: Test;
   answerUserAr: number[] = [];
-  answerUser: String;
+  answerUser: String = '';
   id: number; //id_test
   id_user: number;
   id_quiz: number;
@@ -121,7 +121,6 @@ export class ExamDetailComponent implements OnInit {
   }
 
   click(value: number) {
-    this.answerUserAr = [];
     this.answerUserAr.push(value);
     this.answerUser = this.answerUserAr.join(';');
     this.id_user = Number(localStorage.getItem('ID_KEY'));
@@ -141,6 +140,7 @@ export class ExamDetailComponent implements OnInit {
   }
 
   send() {
+    console.log(this.examQuiz);
     this.examService.saveQuiz(this.examQuiz).subscribe(examQuizDB => {
       this.examService.findEQById(examQuizDB.id).subscribe(examQuiz => {
         this.examQuizAr.push(examQuiz);
@@ -148,12 +148,16 @@ export class ExamDetailComponent implements OnInit {
     }, error => {
       console.log(error)
     });
+    this.answerUserAr = [];
+    this.answerUser = '';
+    this.examQuiz = null;
   }
 
   submitTest() {
+    this.checkAr(this.examQuizAr);
     Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: this.examQuizzesDoneCheck.length + " / " + this.test.quizzes.length + " done!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -161,14 +165,7 @@ export class ExamDetailComponent implements OnInit {
       confirmButtonText: 'Yes, Submit test!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-            'Done!',
-            ' ',
-            'success'
-        )
-        let examQuizzes = [];
         this.id_user = Number(localStorage.getItem('ID_KEY'));
-        this.checkAr(this.examQuizAr);
         console.log(this.examQuizzesDoneCheck);
         this.examTest = {
           "examQuizzes": this.examQuizzesDoneCheck,
@@ -279,12 +276,10 @@ export class ExamDetailComponent implements OnInit {
             'success'
         )
         localStorage.clear();
-        this.router.navigate(['home']).then(()=>{
+        this.router.navigate(['home']).then(() => {
           location.reload()
         })
       }
     })
-
-
   }
 }
