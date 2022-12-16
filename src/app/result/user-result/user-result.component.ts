@@ -50,4 +50,7 @@ export class UserResultComponent implements OnInit, AfterViewInit {
   //   return this.sum;
   // }
 
+  num(TA){
+  }
+
 }

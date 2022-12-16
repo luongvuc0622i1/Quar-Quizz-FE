@@ -6,13 +6,14 @@ import {ManagerLayoutComponent} from "./layouts/manager-layout/manager-layout.co
 import {FormLoginComponent} from "./form-login/form-login.component";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {UserLayoutComponent} from "./layouts/user-layout/user-layout.component";
+import {AuthGuard} from "./security/auth.guard";
 
 const routes: Routes = [
     {
         path: '',
         component: HomePageComponent
     }, {
-        path: 'manager',
+        path: 'manager', canActivate: [AuthGuard],
         component: ManagerLayoutComponent,
         children: [
             {
@@ -20,7 +21,7 @@ const routes: Routes = [
                 loadChildren: () => import('./layouts/manager-layout/manager-layout.module').then(x => x.ManagerLayoutModule)
             }]
     }, {
-        path: 'user',
+        path: 'user', canActivate: [AuthGuard],
         component: UserLayoutComponent,
         children: [
             {

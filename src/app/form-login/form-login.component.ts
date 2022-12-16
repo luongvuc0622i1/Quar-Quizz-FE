@@ -16,9 +16,9 @@ export class FormLoginComponent implements OnInit, AfterViewInit {
 
   formLogin: any = {};
 
-  statusRegister = 'Please fill in the form to create account!';
+  statusRegister = '';
 
-  statusLogin = 'Please fill in the form to create account!';
+  statusLogin = '';
 
   hide = true;
 
@@ -141,7 +141,7 @@ export class FormLoginComponent implements OnInit, AfterViewInit {
             if (data.roleSet[0].name == 'MANAGER') {
               this.router.navigate(['/manager/dashboard']);
             } else if (data.roleSet[0].name == 'USER') {
-              this.router.navigate(['/user/dashboard']);
+              this.router.navigate(['/user/exam/list']);
             }
           }
           // @ts-ignore
