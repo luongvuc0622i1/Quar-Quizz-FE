@@ -22,14 +22,7 @@ export class HistoryListComponent implements OnInit {
             this.examTestDetail = examTestDetail;
         })
     }
-    num(){
-        let countQuizzes:number;
-      let count: any = this.examTestDetail1.numOfTA;
-       let checkQuizzes:any= this.examTestDetail1.examQuizzes.test.quizzes;
-       for(let i:number; checkQuizzes.length;i++){
-           countQuizzes +=i;
-       }
-       this.sum = count/countQuizzes*100;
-       return this.sum;
+    num(TA){
     }
+
 }

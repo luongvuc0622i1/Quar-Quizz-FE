@@ -33,9 +33,9 @@
                                 <div *ngFor=" let category of exam.examQuizzes[i].test.categories">{{category.name}}</div>
                                 <td>{{exam.examQuizzes[i].test.passScore}}</td>
 <!--                                <td>{{sum}}</td>-->
-<!--                                <td>{{exam.numOfTA}}</td>-->
-<!--                                <td>{{exam.examQuizzes}}</td>-->
-<!--                                <td>{{exam.numOfTA}}</td>-->
+<!--                                <td>{{num()}}</td>-->
+<!--                                <td>{{exam.examQuizzes[i].test.quizzes}}</td>-->
+                                <td>{{exam.numOfTA/exam.examQuizzes[i].test.quizzes.length*100}}</td>
                                 <td><a [routerLink]="['/user/examQuizDetail/',exam.id]">DETAIL</a></td>
 
                             </tr>
