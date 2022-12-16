@@ -290,3 +290,14 @@ label.btn-label {
   display: none;
   color: rgba(255,255,255,.4);
 }
+
+.mat-icon:hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 48px;
+  width: 48px;
+  display: none;
+  color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.3);
+}
